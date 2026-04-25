@@ -1919,21 +1919,6 @@
     .nav-work-wrapper .work-dropdown .nav-link {
       white-space: nowrap;
     }
-
-    /* Custom hero text animations */
-    .hero-title { margin: 0; padding: 0; }
-    .text-static-white { color: #ffffff; display: inline-block; }
-    .text-animate-arnob { display: inline-block; animation: floatAndGlow 3s ease-in-out infinite; }
-    @keyframes floatAndGlow { 0%, 100% { transform: translateY(0); color: #ffffff; } 50% { transform: translateY(-10px); color: #bf9049; } }
-    .hero-subtitle { margin-top: 10px; }
-    .hero-subtitle .role.text-gold { color: #bf9049; display: inline-block; opacity: 0; transform: translateY(15px); animation: fadeSlideUp 0.6s ease-out forwards; }
-    .hero-subtitle .divider { color: #ffffff; display: inline-block; opacity: 0; transform: translateY(15px); animation: fadeSlideUp 0.6s ease-out forwards; }
-    @keyframes fadeSlideUp { to { opacity: 1; transform: translateY(0); } }
-    .hero-subtitle span:nth-child(1) { animation-delay: 0.2s; }
-    .hero-subtitle span:nth-child(2) { animation-delay: 0.4s; }
-    .hero-subtitle span:nth-child(3) { animation-delay: 0.6s; }
-    .hero-subtitle span:nth-child(4) { animation-delay: 0.8s; }
-    .hero-subtitle span:nth-child(5) { animation-delay: 1.0s; }
   </style>
 </head>
 
@@ -1986,17 +1971,17 @@
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="text-static-white">ALVY</span>
-          <span class="text-animate-arnob">ARNOB</span>
-        </h1>
-        <h2 class="hero-subtitle">
-          <span class="role text-gold">ARTIST</span>
-          <span class="divider">|</span>
-          <span class="role text-gold">ILLUSTRATOR</span>
-          <span class="divider">|</span>
-          <span class="role text-gold">ANIMATOR</span>
-        </h2>
+        <div class="hero-name">
+          <span class="hero-alvy">ALVY</span>
+          <span class="hero-arnob">ARNOB</span>
+        </div>
+        <div class="hero-sub">
+          <span class="role-w">Artist</span>
+          <span class="role-sep">|</span>
+          <span class="role-w">Illustrator</span>
+          <span class="role-sep">|</span>
+          <span class="role-w">Animator</span>
+        </div>
       </div>
       <div class="scroll-ind">
         <span>Scroll</span>
