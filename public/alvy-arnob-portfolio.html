@@ -2603,7 +2603,7 @@
                     of young readers.</div>
                 </div>
               </div>
-              <a href="achievements.html" class="ach-card" style="text-decoration:none;color:inherit;display:block;"><svg width="80" height="80">
+              <div onclick="document.getElementById('achievement-modal').style.display='block'" class="ach-card" style="cursor:pointer;"><svg width="80" height="80">
                   <use href="#ph" />
                 </svg>
                 <div class="ach-overlay">
@@ -2612,7 +2612,7 @@
                   <div class="ach-desc">Finalist at the South Asian Animation Festival for an original 2D animated short
                     film.</div>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
           <div class="ach-dots" id="ach-d">
@@ -2992,6 +2992,21 @@
       <div class="lb-details-title" id="lb-title">Artwork Title</div>
       <div class="lb-details-meta" id="lb-meta"></div>
       <div class="lb-details-desc" id="lb-desc">Details about this piece.</div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENT MODAL -->
+  <div id="achievement-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 9999; overflow-y: auto;">
+    <button onclick="document.getElementById('achievement-modal').style.display='none'" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: #bf9049; font-size: 2rem; cursor: pointer;">&times;</button>
+    <div style="max-width: 56rem; margin: 0 auto; padding: 5rem 1.5rem; margin-top: 2.5rem;">
+      <p style="color: #bf9049; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span style="width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: #bf9049; display: inline-block;"></span> FINALIST 2024
+      </p>
+      <h1 style="color: #fff; font-family: Georgia, serif; font-size: 2.25rem; margin-bottom: 2rem;">Animation Short — Film Festival</h1>
+      <img src="https://placehold.co/800x400/2a2a2a/bf9049?text=Festival+Showcase" alt="Festival Showcase" style="width: 100%; border-radius: 2px; margin-bottom: 2rem;" />
+      <p style="color: #d1d5db; line-height: 1.7; font-size: 1.125rem;">
+        Detailed breakdown of the achievement goes here. This full-screen modal acts exactly like a new page without triggering iframe navigation blocks.
+      </p>
     </div>
   </div>
 </body>
