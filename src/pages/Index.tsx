@@ -1,10 +1,15 @@
+import PortfolioGrid from "@/components/PortfolioGrid";
+
 const Index = () => {
   return (
-    <iframe
-      title="Alvy Arnob Portfolio"
-      src="/alvy-arnob-portfolio.html"
-      className="h-screen w-screen border-0"
-    />
+    <div className="min-h-screen w-full bg-black">
+      <iframe
+        title="Alvy Arnob Portfolio"
+        src="/alvy-arnob-portfolio.html"
+        className="block h-screen w-full border-0"
+      />
+      <PortfolioGrid />
+    </div>
   );
 };
 
