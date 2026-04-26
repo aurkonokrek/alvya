@@ -483,26 +483,58 @@
     }
 
     .hero-alvy {
-      color: #ffffff;
-      display: inline-block;
+      color: var(--white);
     }
 
-    /* ARNOB: continuous bob + color cycle white ↔ #bf9049 */
+    /* ARNOB: pops up from below, then loops gold ↔ white */
     .hero-arnob {
+      color: var(--gold);
       display: inline-block;
-      color: #ffffff;
-      animation: arnobBob 2.8s ease-in-out infinite,
-        arnobColor 3.5s ease-in-out infinite;
+      animation: arnobPop 1.1s cubic-bezier(.22, .68, 0, 1.2) .5s both,
+        arnobColor 3.5s ease-in-out 1.8s infinite;
+      transform-origin: center bottom;
     }
 
-    @keyframes arnobBob {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
+    @keyframes arnobPop {
+      0% {
+        opacity: 0;
+        transform: translateY(60px) scale(.85);
+      }
+
+      60% {
+        transform: translateY(-8px) scale(1.04);
+      }
+
+      80% {
+        transform: translateY(3px) scale(.99);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     @keyframes arnobColor {
-      0%, 100% { color: #ffffff; }
-      50%      { color: #bf9049; }
+      0% {
+        color: var(--gold);
+      }
+
+      35% {
+        color: var(--white);
+      }
+
+      55% {
+        color: var(--white);
+      }
+
+      85% {
+        color: var(--gold);
+      }
+
+      100% {
+        color: var(--gold);
+      }
     }
 
     /* ===== ROLE TEXT ===== */
@@ -524,26 +556,21 @@
 
     .role-w {
       display: inline-block;
-      color: #bf9049;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: roleFadeUp 0.7s ease-out forwards;
+      color: #C4C4C4;
     }
 
-    @keyframes roleFadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    /* stagger 0.8s apart exactly as Figma shows */
+    .role-w:nth-child(1) {
+      animation: roleColor 6s ease-in-out 2s infinite;
     }
 
-    .hero-sub .role-w:nth-of-type(1) { animation-delay: 0.3s; }
-    .hero-sub .role-w:nth-of-type(2) { animation-delay: 0.7s; }
-    .hero-sub .role-w:nth-of-type(3) { animation-delay: 1.1s; }
-
-    .role-sep {
-      opacity: 0;
-      animation: roleFadeUp 0.7s ease-out forwards;
+    .role-w:nth-child(2) {
+      animation: roleColor 6s ease-in-out 2.8s infinite;
     }
-    .hero-sub .role-sep:nth-of-type(1) { animation-delay: 0.5s; }
-    .hero-sub .role-sep:nth-of-type(2) { animation-delay: 0.9s; }
+
+    .role-w:nth-child(3) {
+      animation: roleColor 6s ease-in-out 3.6s infinite;
+    }
 
     .role-sep {
       color: rgba(255, 255, 255, .3);
@@ -2576,7 +2603,7 @@
                     of young readers.</div>
                 </div>
               </div>
-              <a class="ach-card" href="/achievements" style="text-decoration:none;color:inherit;display:block;cursor:pointer;transition:transform .3s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"><svg width="80" height="80">
+              <div class="ach-card"><svg width="80" height="80">
                   <use href="#ph" />
                 </svg>
                 <div class="ach-overlay">
@@ -2585,7 +2612,7 @@
                   <div class="ach-desc">Finalist at the South Asian Animation Festival for an original 2D animated short
                     film.</div>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
           <div class="ach-dots" id="ach-d">
