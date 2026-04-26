@@ -2998,15 +2998,60 @@
   <!-- ACHIEVEMENT MODAL -->
   <div id="achievement-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 9999; overflow-y: auto;">
     <button onclick="document.getElementById('achievement-modal').style.display='none'" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: #bf9049; font-size: 2rem; cursor: pointer;">&times;</button>
-    <div style="max-width: 56rem; margin: 0 auto; padding: 5rem 1.5rem; margin-top: 2.5rem;">
-      <p style="color: #bf9049; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-        <span style="width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: #bf9049; display: inline-block;"></span> FINALIST 2024
-      </p>
-      <h1 style="color: #fff; font-family: Georgia, serif; font-size: 2.25rem; margin-bottom: 2rem;">Animation Short — Film Festival</h1>
-      <img src="https://placehold.co/800x400/2a2a2a/bf9049?text=Festival+Showcase" alt="Festival Showcase" style="width: 100%; border-radius: 2px; margin-bottom: 2rem;" />
-      <p style="color: #d1d5db; line-height: 1.7; font-size: 1.125rem;">
-        Detailed breakdown of the achievement goes here. This full-screen modal acts exactly like a new page without triggering iframe navigation blocks.
-      </p>
+    <style>
+      .ach-modal-wrap { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; margin-top: 1rem; }
+      .ach-modal-title { color: #bf9049; font-family: Georgia, serif; font-size: 2.25rem; margin-bottom: 4rem; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; }
+      .ach-modal-grid { display: grid; grid-template-columns: 1fr; gap: 5rem; }
+      .ach-row { display: flex; flex-direction: column; gap: 2.5rem; align-items: center; }
+      .ach-col { width: 100%; }
+      .ach-img { width: 100%; border-radius: 2px; object-fit: cover; aspect-ratio: 16 / 10; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: block; }
+      .ach-tag { color: #bf9049; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+      .ach-h2 { color: #fff; font-family: Georgia, serif; font-size: 1.875rem; margin-bottom: 1rem; }
+      .ach-desc { color: #d1d5db; line-height: 1.7; font-size: 1.125rem; }
+      @media (min-width: 768px) {
+        .ach-row { flex-direction: row; }
+        .ach-row.reverse { flex-direction: row-reverse; }
+        .ach-col { width: 50%; }
+      }
+    </style>
+    <div class="ach-modal-wrap">
+      <h1 class="ach-modal-title">All Achievements & Awards</h1>
+      <div class="ach-modal-grid">
+
+        <div class="ach-row">
+          <div class="ach-col">
+            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Film+Festival" alt="Film Festival" class="ach-img" />
+          </div>
+          <div class="ach-col">
+            <p class="ach-tag">FINALIST 2024</p>
+            <h2 class="ach-h2">Animation Short — Film Festival</h2>
+            <p class="ach-desc">Finalist at the South Asian Animation Festival for an original 2D animated short film. This project took over six months of dedicated frame-by-frame illustration, capturing the essence of local folklore and bringing it to the big screen.</p>
+          </div>
+        </div>
+
+        <div class="ach-row reverse">
+          <div class="ach-col">
+            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Published+Book" alt="Book Publication" class="ach-img" />
+          </div>
+          <div class="ach-col">
+            <p class="ach-tag">PUBLISHED 2021</p>
+            <h2 class="ach-h2">Published Children's Book</h2>
+            <p class="ach-desc">Illustrated a nationally distributed children's book series, reaching thousands of young readers. The illustrations focused on vibrant colors and expressive characters to help teach early reading fundamentals.</p>
+          </div>
+        </div>
+
+        <div class="ach-row">
+          <div class="ach-col">
+            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Art+Exhibition" alt="Art Exhibition" class="ach-img" />
+          </div>
+          <div class="ach-col">
+            <p class="ach-tag">EXHIBITION 2019</p>
+            <h2 class="ach-h2">National Art Gallery Showcase</h2>
+            <p class="ach-desc">Featured artist in the annual contemporary illustration exhibition. Showcased a series of traditional ink and oil paintings exploring maternal earth archetypes and natural environments.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </body>
