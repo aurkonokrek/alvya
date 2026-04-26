@@ -1919,7 +1919,17 @@
     .nav-work-wrapper .work-dropdown .nav-link {
       white-space: nowrap;
     }
+
+    .portfolio-carousel-section { width: 100%; max-width: 1200px; margin: 4rem auto; padding: 0 2rem; overflow: hidden; }
+    .work-card { display: flex; flex-direction: column; align-items: center; text-decoration: none; gap: 1.5rem; transition: transform 0.3s ease; }
+    .work-card:hover { transform: translateY(-8px); }
+    .card-image { width: 100%; aspect-ratio: 3 / 4; background-color: #d1d5db; background-size: cover; background-position: center; border-radius: 2px; }
+    .bg-traditional { background-color: #cccccc; }
+    .bg-digital { background-color: #bbbbbb; }
+    .bg-animation { background-color: #aaaaaa; }
+    .card-title { color: #bf9049; font-family: serif; font-size: 1.5rem; letter-spacing: 0.1em; text-align: center; margin: 0; font-weight: 400; }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -2007,138 +2017,30 @@
       </div>
     </div>
 
-    <!-- TRADITIONAL WORK -->
-    <div class="hw-section">
-      <div class="hw-text rev-l">
-        <div class="hw-title spt">Traditional Work</div>
-        <div class="hw-body">I have been drawing since childhood and my love for art has only grown with time.
-          Traditional work has always been my foundation, giving me the freedom to explore creativity in many ways.
-        </div>
-        <button class="btn-outline" onclick="goPage('traditional')">View More</button>
-      </div>
-      <div class="carousel-wrap rev-r" id="c-trad">
-        <div class="c-arrows">
-          <button class="c-arrow" onclick="cMove('c-trad',-1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
-          </button>
-          <button class="c-arrow" onclick="cMove('c-trad',1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
-          </button>
-        </div>
-        <div class="carousel-track" id="c-trad-t">
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-        </div>
-        <div class="c-dots" id="c-trad-d">
-          <div class="c-dot act" onclick="cGo('c-trad',0)"></div>
-          <div class="c-dot" onclick="cGo('c-trad',1)"></div>
-          <div class="c-dot" onclick="cGo('c-trad',2)"></div>
+    <section class="portfolio-carousel-section">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="/traditional-work" class="work-card">
+              <div class="card-image bg-traditional"></div>
+              <h3 class="card-title">TRADITIONAL WORK</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="/digital-work" class="work-card">
+              <div class="card-image bg-digital"></div>
+              <h3 class="card-title">DIGITAL WORK</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="/animation-work" class="work-card">
+              <div class="card-image bg-animation"></div>
+              <h3 class="card-title">ANIMATION WORK</h3>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- DIGITAL WORK -->
-    <div class="hw-section rev">
-      <div class="hw-text rev-r" style="text-align:right;">
-        <div class="hw-title spt">Digital Work</div>
-        <div class="hw-body" style="text-align:right;">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
-          faucibus ex sapien vitae pellentesque sem placerat.</div>
-        <div style="text-align:right;"><button class="btn-outline" onclick="goPage('digital')">View More</button></div>
-      </div>
-      <div class="carousel-wrap rev-l" id="c-dig">
-        <div class="c-arrows">
-          <button class="c-arrow" onclick="cMove('c-dig',-1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
-          </button>
-          <button class="c-arrow" onclick="cMove('c-dig',1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
-          </button>
-        </div>
-        <div class="carousel-track" id="c-dig-t">
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-        </div>
-        <div class="c-dots" id="c-dig-d">
-          <div class="c-dot act" onclick="cGo('c-dig',0)"></div>
-          <div class="c-dot" onclick="cGo('c-dig',1)"></div>
-          <div class="c-dot" onclick="cGo('c-dig',2)"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ANIMATION WORK -->
-    <div class="hw-section">
-      <div class="hw-text rev-l">
-        <div class="hw-title spt">Animation Work</div>
-        <div class="hw-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat.</div>
-        <button class="btn-outline" onclick="goPage('animation')">View More</button>
-      </div>
-      <div class="carousel-wrap rev-r" id="c-anim">
-        <div class="c-arrows">
-          <button class="c-arrow" onclick="cMove('c-anim',-1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
-          </button>
-          <button class="c-arrow" onclick="cMove('c-anim',1)">
-            <div
-              style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-                style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
-          </button>
-        </div>
-        <div class="carousel-track" id="c-anim-t">
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-          <div class="carousel-slide"><svg width="80" height="80">
-              <use href="#ph" />
-            </svg></div>
-        </div>
-        <div class="c-dots" id="c-anim-d">
-          <div class="c-dot act" onclick="cGo('c-anim',0)"></div>
-          <div class="c-dot" onclick="cGo('c-anim',1)"></div>
-          <div class="c-dot" onclick="cGo('c-anim',2)"></div>
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- MORE ABOUT ME -->
     <div class="more-about rev-up">
@@ -2967,6 +2869,14 @@
       <div class="lb-details-desc" id="lb-desc">Details about this piece.</div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1, spaceBetween: 30, loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+  </script>
 </body>
 
 </html>
