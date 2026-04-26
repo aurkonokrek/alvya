@@ -1920,16 +1920,14 @@
       white-space: nowrap;
     }
 
-    .portfolio-carousel-section { width: 100%; max-width: 1200px; margin: 4rem auto; padding: 0 2rem; overflow: hidden; }
-    .work-card { display: flex; flex-direction: column; align-items: center; text-decoration: none; gap: 1.5rem; transition: transform 0.3s ease; }
-    .work-card:hover { transform: translateY(-8px); }
-    .card-image { width: 100%; aspect-ratio: 3 / 4; background-color: #d1d5db; background-size: cover; background-position: center; border-radius: 2px; }
-    .bg-traditional { background-color: #cccccc; }
-    .bg-digital { background-color: #bbbbbb; }
-    .bg-animation { background-color: #aaaaaa; }
-    .card-title { color: #bf9049; font-family: serif; font-size: 1.5rem; letter-spacing: 0.1em; text-align: center; margin: 0; font-weight: 400; }
+    .portfolio-grid-section { width: 100%; max-width: 72rem; margin-left: auto; margin-right: auto; padding: 4rem 1rem; }
+    .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .work-card { display: block; cursor: pointer; text-decoration: none; }
+    .card-image { width: 100%; aspect-ratio: 3 / 4; background-color: #d1d5db; border-radius: 0.125rem; transition: transform 300ms ease; }
+    .work-card:hover .card-image { transform: translateY(-0.5rem); }
+    .card-title { text-align: center; margin-top: 1.5rem; margin-bottom: 0; font-family: ui-serif, Georgia, serif; font-size: 1.25rem; line-height: 1.75rem; letter-spacing: 0.1em; color: #bf9049; font-weight: 400; }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -2017,28 +2015,20 @@
       </div>
     </div>
 
-    <section class="portfolio-carousel-section">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="/traditional-work" class="work-card">
-              <div class="card-image bg-traditional"></div>
-              <h3 class="card-title">TRADITIONAL WORK</h3>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="/digital-work" class="work-card">
-              <div class="card-image bg-digital"></div>
-              <h3 class="card-title">DIGITAL WORK</h3>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="/animation-work" class="work-card">
-              <div class="card-image bg-animation"></div>
-              <h3 class="card-title">ANIMATION WORK</h3>
-            </a>
-          </div>
-        </div>
+    <section class="portfolio-grid-section">
+      <div class="portfolio-grid">
+        <a href="/traditional-work" class="work-card">
+          <div class="card-image"></div>
+          <h3 class="card-title">TRADITIONAL WORK</h3>
+        </a>
+        <a href="/digital-work" class="work-card">
+          <div class="card-image"></div>
+          <h3 class="card-title">DIGITAL WORK</h3>
+        </a>
+        <a href="/animation-work" class="work-card">
+          <div class="card-image"></div>
+          <h3 class="card-title">ANIMATION WORK</h3>
+        </a>
       </div>
     </section>
 
@@ -2869,14 +2859,6 @@
       <div class="lb-details-desc" id="lb-desc">Details about this piece.</div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1, spaceBetween: 30, loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-  </script>
 </body>
 
 </html>
