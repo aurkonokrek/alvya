@@ -2869,6 +2869,14 @@
       <div class="lb-details-desc" id="lb-desc">Details about this piece.</div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1, spaceBetween: 30, loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+  </script>
 </body>
 
 </html>
