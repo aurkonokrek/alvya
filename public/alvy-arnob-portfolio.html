@@ -3062,6 +3062,43 @@
       </div>
     </div>
   </div>
+
+  <!-- ===== POLISH OVERRIDES ===== -->
+  <style>
+    :root { --gold-soft: rgba(191,144,73,0.3); --gold-line: rgba(191,144,73,0.2); }
+    a, button { transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 300ms ease; }
+    .aspect-video, [class*="bg-gradient-to"] { transition: transform 400ms ease, box-shadow 400ms ease, border-color 400ms ease; }
+    .aspect-video:hover, [class*="bg-gradient-to"]:hover { box-shadow: 0 12px 32px rgba(191,144,73,0.08); }
+    h1, h2, h3, .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
+    #achievement-modal.is-open { display: block !important; opacity: 1 !important; }
+    #achievement-modal .ach-modal-wrap { animation: achRise 400ms ease both; }
+    @keyframes achRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    body.modal-open { overflow: hidden; }
+    @media (max-width: 720px) {
+      #achievement-modal .ach-modal-wrap { padding: 4rem 1.25rem; }
+    }
+  </style>
+  <script>
+    (function () {
+      var modal = document.getElementById('achievement-modal');
+      window.openAchModal = function () {
+        if (!modal) return;
+        modal.style.display = 'block';
+        requestAnimationFrame(function () { modal.classList.add('is-open'); });
+        document.body.classList.add('modal-open');
+      };
+      window.closeAchModal = function () {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.style.opacity = '0';
+        document.body.classList.remove('modal-open');
+        setTimeout(function () { modal.style.display = 'none'; }, 250);
+      };
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) window.closeAchModal();
+      });
+    })();
+  </script>
 </body>
 
 </html>
