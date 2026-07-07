@@ -2053,8 +2053,9 @@
   <nav class="navbar">
     <a class="nav-logo" onclick="goPage('home')">ALVY <span>ARNOB</span></a>
     <div class="nav-links">
-      <div class="nav-work-wrapper">
-        <a class="nav-link" onclick="goPage('home')">Works</a>
+      <div class="nav-work-wrapper" id="navWorkWrap">
+        <a class="nav-link" onclick="toggleWorks(event)">Works</a>
+
         <div class="work-dropdown">
           <a class="nav-link" onclick="goPage('traditional')">Traditional Work</a>
           <a class="nav-link" onclick="goPage('digital')">Digital Work</a>
