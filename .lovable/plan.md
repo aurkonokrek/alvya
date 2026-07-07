@@ -1,26 +1,21 @@
-## ARNOB hero animation — match Figma GIF (looping)
+Implement only the ARNOB animation to mirror the provided GIF, without changing any other hero design.
 
-The reference GIF is an ~8s loop. In each cycle ARNOB drops in from above the headline in **white** (starting slightly larger, scaling down as it lands), settles next to ALVY, holds white for a moment, transitions to **gold**, holds gold for several seconds, then the whole cycle repeats.
+Plan:
+1. Replace the current ARNOB keyframe timing with a GIF-style loop:
+   - ARNOB starts hidden above the headline in white.
+   - It drops down quickly with a larger scale.
+   - It bounces/settles into the normal baseline next to ALVY.
+   - It stays white briefly.
+   - It changes to gold after the hold.
+   - It stays gold for the rest of the loop.
+   - It resets cleanly and repeats.
+2. Keep the existing hero typography, layout, spacing, ALVY styling, colors, and all other page design untouched.
+3. Adjust only these CSS parts in `public/alvy-arnob-portfolio.html`:
+   - `.hero-arnob`
+   - the ARNOB keyframes
+4. Tune the animation duration and keyframe percentages to more closely match the reference GIF rather than the current slower/incorrect motion.
 
-Currently the animation plays only once. I will convert it into a single infinite keyframe timeline that runs continuously.
-
-### Sequence per loop (~7s)
-```
-0%          ARNOB above baseline, white, scale 1.15, opacity 0
-6%          fully visible, still dropping
-14%         lands with slight overshoot (translateY 8px, scale 1.03)
-20%         settled at final position, white, scale 1
-35%         still white, holding
-50%         color finished transitioning white → gold
-90%         still gold, holding
-100%        (reset for next loop) back to above baseline, white, opacity 0
-```
-
-Both `transform`, `opacity`, and `color` will animate inside one `@keyframes arnobLoop` so timing stays perfectly in sync. `animation-iteration-count: infinite`.
-
-### Technical changes (only file: `public/alvy-arnob-portfolio.html`)
-- Replace the `.hero-arnob` rule and its two keyframes (`arnobDrop`, `arnobToGold`, around lines 535–575) with:
-  - One `.hero-arnob` rule using `animation: arnobLoop 7s cubic-bezier(.22,.68,0,1.2) .4s infinite both;`
-  - One `@keyframes arnobLoop` covering drop-in, color shift, hold, and reset as described above.
-- Keep initial `color: #ffffff` and `transform-origin: center top` so the very first render before animation kicks in is not gold.
-- Nothing else in the hero (ALVY, subtitle, layout, images, ordering) changes.
+Technical details:
+- Use a single infinite `@keyframes arnobLoop` for movement, opacity, scale, and color.
+- Make the drop happen early in the loop, keep the white hold short, then transition to `var(--gold)` and hold.
+- Avoid changes outside the ARNOB animation block.
