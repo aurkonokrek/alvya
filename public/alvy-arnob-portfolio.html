@@ -499,6 +499,26 @@
       }
     }
 
+    /* ===== FIGMA MASK ANIMATION ===== */
+    .figma-mask-container {
+      overflow: hidden;
+      display: inline-flex;
+      vertical-align: bottom;
+    }
+    .figma-masked-text {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: figmaSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .delay-alvy { animation-delay: 0.1s; }
+    .delay-arnob { animation-delay: 0.3s; }
+    .delay-subtitle { animation-delay: 0.5s; }
+    @keyframes figmaSlideUp {
+      0%   { transform: translateY(110%); opacity: 0; }
+      100% { transform: translateY(0);    opacity: 1; }
+    }
+
     /* ===== HERO NAME ===== */
     /* Figma: ALVY white 128px / ARNOB gold 128px, same line, line-height 164% */
     .hero-name {
@@ -532,12 +552,11 @@
       color: var(--white);
     }
 
-    /* ARNOB: pops up from below, then loops gold ↔ white */
+    /* ARNOB: mask handles entry; keep gold ↔ white loop */
     .hero-arnob {
       color: var(--gold);
       display: inline-block;
-      animation: arnobPop 1.1s cubic-bezier(.22, .68, 0, 1.2) .5s both,
-        arnobColor 3.5s ease-in-out 1.8s infinite;
+      animation: arnobColor 3.5s ease-in-out 1.8s infinite;
       transform-origin: center bottom;
     }
 
@@ -2077,14 +2096,16 @@
       <div class="hero-content">
         <div class="hero-name">
           <span class="hero-alvy">ALVY</span>
-          <span class="hero-arnob">ARNOB</span>
+          <span class="figma-mask-container"><span class="hero-arnob figma-masked-text delay-arnob">ARNOB</span></span>
         </div>
         <div class="hero-sub">
-          <span class="role-w">Artist</span>
-          <span class="role-sep">|</span>
-          <span class="role-w">Illustrator</span>
-          <span class="role-sep">|</span>
-          <span class="role-w">Animator</span>
+          <span class="figma-mask-container"><span class="figma-masked-text delay-subtitle" style="display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <span class="role-w">Artist</span>
+            <span class="role-sep">|</span>
+            <span class="role-w">Illustrator</span>
+            <span class="role-sep">|</span>
+            <span class="role-w">Animator</span>
+          </span></span>
         </div>
       </div>
       <div class="scroll-ind">
