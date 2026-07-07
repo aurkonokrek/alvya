@@ -2895,6 +2895,16 @@
     }
     function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
     function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    (function initScrollTopVisibility(){
+      const btn = document.querySelector('.scroll-top');
+      if (!btn) return;
+      const update = () => {
+        if (window.scrollY > 300) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
 
     /* ===== SCROLL REVEAL ===== */
     function initReveal() {
