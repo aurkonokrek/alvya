@@ -1,20 +1,27 @@
-## Plan: Share the full portfolio code
+## ARNOB hero animation — refined timing
 
-You're asking for the complete source of the design we've built. The portfolio lives entirely in one static file, plus a tiny React shell that just embeds it in an iframe.
+Rework the `.hero-arnob` animation in `public/alvy-arnob-portfolio.html` so the beats are clearly distinct and match the described feel.
 
-### What I'll deliver
+### Desired sequence
+1. ALVY appears first (unchanged).
+2. ARNOB drops in from above the headline in **white**, with a slight bounce as it lands next to ALVY.
+3. It **holds fully white and settled for ~1 second** (no color change, no motion).
+4. Then it **smoothly transitions to gold** over ~0.6s and stays gold permanently (no looping back to white).
 
-Once you approve, I'll paste the full contents of these files directly into chat (no file edits needed):
+### Timing (approx.)
+- 0.0s: ALVY fade/slide up begins.
+- 0.6s: ARNOB starts dropping from `translateY(-100px)` in white.
+- ~1.5s: ARNOB has landed, sits still and white.
+- ~2.5s: ARNOB begins white → gold color transition.
+- ~3.1s: ARNOB fully gold, animation ends.
 
-1. **`public/alvy-arnob-portfolio.html`** — the entire portfolio: hero, works, achievements, modal, footer, all CSS, all JS. This is ~95% of the design.
-2. **`public/achievements.html`** — the secondary "Achievements Details" page.
-3. **`src/pages/Index.tsx`** — the 8-line React wrapper that renders the HTML inside the app.
-4. **`index.html`** — the root HTML shell (title, meta, fonts, root div).
+### Technical changes
+- Replace the current `.hero-arnob` animation stack with two sequential keyframes:
+  - `arnobDrop` (drop from above + settle bounce, opacity 0 → 1) — runs once, ~0.9s.
+  - `arnobToGold` (color: white → gold) — runs once, delayed until after the ~1s hold.
+- Remove the old infinite `arnobColor` loop.
+- Ensure the initial color is `white` (via the keyframe's `0%` and inline default) so there is no gold flash before the drop.
+- Keep everything else in the hero (ALVY, subtitle, layout, images) untouched.
 
-### Options
-
-- **A. Paste everything in chat** (default) — all four files inline, ready to copy.
-- **B. Just the main portfolio file** — only `alvy-arnob-portfolio.html` if that's all you need.
-- **C. Bundle as a ZIP** — I can package the files into a downloadable archive under `/mnt/documents/` instead.
-
-Reply with A, B, or C (or tell me if you want something different) and I'll deliver it.
+### Files
+- `public/alvy-arnob-portfolio.html` — only the `.hero-arnob` rule and its `@keyframes` blocks (around lines 535–575).
