@@ -3138,7 +3138,22 @@
       window.scrollTo({ top: 0, behavior: 'instant' });
       setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); }, 60);
     }
-    function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
+    function toggleNav() {
+      var nav = document.getElementById('navMob');
+      var burger = document.querySelector('.nav-burger');
+      var isOpen = nav.classList.toggle('open');
+      if (burger) burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (!isOpen) {
+        var w = document.getElementById('navMobWorks');
+        if (w) w.classList.remove('open');
+      }
+    }
+    function toggleMobileWorks(e) {
+      if (e) e.preventDefault();
+      var w = document.getElementById('navMobWorks');
+      if (w) w.classList.toggle('open');
+    }
     function toggleWorks(e) {
       e.stopPropagation();
       document.getElementById('navWorkWrap').classList.toggle('open');
