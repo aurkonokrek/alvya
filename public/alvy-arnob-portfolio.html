@@ -2245,7 +2245,16 @@
     <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </nav>
   <div class="nav-mobile" id="navMob">
-    <a class="nav-link" onclick="goPage('home');toggleNav()">Works</a>
+    <div class="nav-mobile-works" id="navMobWorks">
+      <button type="button" class="nav-mobile-works-toggle" onclick="toggleMobileWorks(event)">
+        <span>Works</span><span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-mobile-sub">
+        <a class="nav-link" onclick="goPage('traditional');toggleNav()">Traditional Work</a>
+        <a class="nav-link" onclick="goPage('digital');toggleNav()">Digital Work</a>
+        <a class="nav-link" onclick="goPage('animation');toggleNav()">Animation Work</a>
+      </div>
+    </div>
     <a class="nav-link" onclick="goPage('about');toggleNav()">About Me</a>
     <a class="nav-link" onclick="goPage('contact');toggleNav()">Contact</a>
   </div>
