@@ -853,34 +853,43 @@
     .wp-nav {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 36px;
     }
 
     .wp-arr {
-      width: 26px;
-      height: 26px;
-      background: none;
-      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid #BF9049;
+      color: #BF9049;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: opacity .2s;
-      opacity: 0.8;
       padding: 0;
+      transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s ease;
     }
 
-    .wp-arr.act,
-    .wp-arr:hover {
-      opacity: 1;
+    .wp-arr:hover,
+    .wp-arr:focus-visible {
+      border-color: #f0c97a;
+      color: #f0c97a;
+      background-color: rgba(240, 201, 122, 0.08);
+      outline: none;
     }
 
     .wp-arr svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--white);
-      stroke: none;
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
     }
 
     .wp-desc {
@@ -2217,20 +2226,12 @@
   <div id="page-traditional" class="page">
     <div class="wp-header rev-up">
       <div class="wp-title"><span class="l1">Traditional</span><span class="l2">Work</span></div>
-      <div class="wp-nav">
-        <button class="wp-arr act" onclick="goPage('traditional')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
+      <div class="wp-nav" aria-label="Work category navigation">
+        <button class="wp-arr" onclick="goPage('animation')" aria-label="Previous work category">
+          <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('digital')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
+        <button class="wp-arr" onclick="goPage('digital')" aria-label="Next work category">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
     </div>
@@ -2285,20 +2286,12 @@
   <div id="page-digital" class="page">
     <div class="wp-header rev-up">
       <div class="wp-title"><span class="l1">Digital</span><span class="l2">Work</span></div>
-      <div class="wp-nav">
-        <button class="wp-arr" onclick="goPage('traditional')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
+      <div class="wp-nav" aria-label="Work category navigation">
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Previous work category">
+          <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr act" onclick="goPage('animation')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
+        <button class="wp-arr" onclick="goPage('animation')" aria-label="Next work category">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
     </div>
@@ -2352,20 +2345,12 @@
   <div id="page-animation" class="page">
     <div class="wp-header rev-up">
       <div class="wp-title"><span class="l1">Animation</span><span class="l2">Work</span></div>
-      <div class="wp-nav">
-        <button class="wp-arr act" onclick="goPage('digital')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
+      <div class="wp-nav" aria-label="Work category navigation">
+        <button class="wp-arr" onclick="goPage('digital')" aria-label="Previous work category">
+          <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('traditional')">
-          <div
-            style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
-              style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Next work category">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
     </div>
