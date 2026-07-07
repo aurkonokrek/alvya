@@ -635,7 +635,7 @@
 
     .role-w {
       display: inline-block;
-      color: #C4C4C4;
+      color: var(--gold);
     }
 
     /* stagger 0.8s apart exactly as Figma shows */
@@ -657,29 +657,22 @@
 
     @keyframes roleColor {
       0% {
-        color: #C4C4C4;
+        color: var(--gold);
       }
 
-      10% {
+      15% {
         color: #ffffff;
       }
 
-      22% {
-        color: #BF9049;
-      }
-
-      34% {
-        color: #ffffff;
-      }
-
-      44% {
-        color: #C4C4C4;
+      35% {
+        color: var(--gold);
       }
 
       100% {
-        color: #C4C4C4;
+        color: var(--gold);
       }
     }
+
 
     /* ===== STATS ===== */
     .stats-bar {
