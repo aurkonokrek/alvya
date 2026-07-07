@@ -499,6 +499,26 @@
       }
     }
 
+    /* ===== FIGMA MASK ANIMATION ===== */
+    .figma-mask-container {
+      overflow: hidden;
+      display: inline-flex;
+      vertical-align: bottom;
+    }
+    .figma-masked-text {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: figmaSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .delay-alvy { animation-delay: 0.1s; }
+    .delay-arnob { animation-delay: 0.3s; }
+    .delay-subtitle { animation-delay: 0.5s; }
+    @keyframes figmaSlideUp {
+      0%   { transform: translateY(110%); opacity: 0; }
+      100% { transform: translateY(0);    opacity: 1; }
+    }
+
     /* ===== HERO NAME ===== */
     /* Figma: ALVY white 128px / ARNOB gold 128px, same line, line-height 164% */
     .hero-name {
