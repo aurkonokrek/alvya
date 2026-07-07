@@ -694,7 +694,7 @@
     .hw-section {
       padding: 80px 52px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 60px;
     }
 
@@ -703,8 +703,8 @@
     }
 
     .hw-text {
-      flex: 0 0 clamp(240px, 28%, 360px);
-      padding-top: 20px;
+      flex: 1 1 0;
+      padding-top: 0;
     }
 
     .hw-title {
@@ -729,7 +729,7 @@
 
     /* ===== CAROUSEL ===== */
     .carousel-wrap {
-      flex: 1;
+      flex: 0 0 clamp(280px, 38%, 460px);
       min-width: 0;
       position: relative;
       overflow: hidden;
@@ -743,7 +743,7 @@
 
     .carousel-slide {
       flex: 0 0 100%;
-      min-height: 320px;
+      aspect-ratio: 4 / 5;
       background: var(--gray-ph);
       display: flex;
       align-items: center;
@@ -1691,6 +1691,13 @@
       .hw-text {
         flex: none;
         width: 100%;
+      }
+
+      .carousel-wrap {
+        flex: none;
+        width: 100%;
+        max-width: 420px;
+        align-self: center;
       }
 
       .more-about {
