@@ -499,61 +499,153 @@
       }
     }
 
-    /* ===== HERO NAME — layout (staggered/overlapping composition) ===== */
+    /* ===== HERO NAME ===== */
+    /* Figma: ALVY white 128px / ARNOB gold 128px, same line, line-height 164% */
     .hero-name {
       font-family: 'DM Serif Display', serif;
+      font-size: clamp(56px, 10vw, 128px);
       font-weight: 400;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: 1.64;
       color: var(--white);
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
+      flex-wrap: nowrap;
+      align-items: baseline;
+      gap: .1em;
       overflow: visible;
+      animation: heroUp 1s cubic-bezier(.22, .68, 0, 1.2) .2s both;
     }
 
-    /* ARNOB sits above ALVY, offset to the right */
-    .hero-arnob-mask {
-      align-self: flex-start;
-      margin-left: clamp(60px, 14vw, 200px);
-      margin-bottom: -.08em;
-      order: -1;
+    @keyframes heroUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-alvy {
       color: var(--white);
-      font-size: clamp(56px, 10vw, 128px);
     }
 
+    /* ARNOB: pops up from below, then loops gold ↔ white */
     .hero-arnob {
       color: var(--gold);
-      font-size: clamp(56px, 10vw, 128px);
+      display: inline-block;
+      animation: arnobPop 1.1s cubic-bezier(.22, .68, 0, 1.2) .5s both,
+        arnobColor 3.5s ease-in-out 1.8s infinite;
+      transform-origin: center bottom;
     }
 
-    /* ===== ROLE TEXT (subtitle) ===== */
-    .hero-sub-mask {
-      margin-top: 10px;
+    @keyframes arnobPop {
+      0% {
+        opacity: 0;
+        transform: translateY(60px) scale(.85);
+      }
+
+      60% {
+        transform: translateY(-8px) scale(1.04);
+      }
+
+      80% {
+        transform: translateY(3px) scale(.99);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
+    @keyframes arnobColor {
+      0% {
+        color: var(--gold);
+      }
+
+      35% {
+        color: var(--white);
+      }
+
+      55% {
+        color: var(--white);
+      }
+
+      85% {
+        color: var(--gold);
+      }
+
+      100% {
+        color: var(--gold);
+      }
+    }
+
+    /* ===== ROLE TEXT ===== */
+    /* Figma: 32px DM Serif Display, uppercase, #C4C4C4 default, #BF9049 active, stagger 0.8s */
     .hero-sub {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(16px, 2.5vw, 32px);
       font-weight: 400;
       text-transform: uppercase;
+      line-height: 1.3;
       letter-spacing: .02em;
-      color: var(--gold);
+      margin-top: 6px;
+      animation: heroUp 1s cubic-bezier(.22, .68, 0, 1.2) .8s both;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .role-w {
+      display: inline-block;
+      color: #C4C4C4;
+    }
+
+    /* stagger 0.8s apart exactly as Figma shows */
+    .role-w:nth-child(1) {
+      animation: roleColor 6s ease-in-out 2s infinite;
+    }
+
+    .role-w:nth-child(2) {
+      animation: roleColor 6s ease-in-out 2.8s infinite;
+    }
+
+    .role-w:nth-child(3) {
+      animation: roleColor 6s ease-in-out 3.6s infinite;
     }
 
     .role-sep {
-      color: var(--gold);
-      opacity: .7;
-      margin: 0 .35em;
+      color: rgba(255, 255, 255, .3);
     }
 
-    @keyframes textSlideUp {
-      0%   { transform: translateY(110%); }
-      100% { transform: translateY(0); }
+    @keyframes roleColor {
+      0% {
+        color: #C4C4C4;
+      }
+
+      10% {
+        color: #ffffff;
+      }
+
+      22% {
+        color: #BF9049;
+      }
+
+      34% {
+        color: #ffffff;
+      }
+
+      44% {
+        color: #C4C4C4;
+      }
+
+      100% {
+        color: #C4C4C4;
+      }
     }
 
     /* ===== STATS ===== */
@@ -1984,11 +2076,15 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-name">
-          <div class="hero-alvy-mask"><h1 class="hero-alvy"><span style="display: inline-block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em;"><span style="display: inline-block; animation: textSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; transform: translateY(110%);">ALVY</span></span></h1></div>
-          <div class="hero-arnob-mask"><h1 class="hero-arnob"><span style="display: inline-block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em;"><span style="display: inline-block; animation: textSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; transform: translateY(110%);">ARNOB</span></span></h1></div>
+          <span class="hero-alvy">ALVY</span>
+          <span class="hero-arnob">ARNOB</span>
         </div>
-        <div class="hero-sub-mask">
-          <p class="hero-sub"><span style="display: inline-block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em;"><span style="display: inline-block; animation: textSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; transform: translateY(110%);">ARTIST | ILLUSTRATOR | ANIMATOR</span></span></p>
+        <div class="hero-sub">
+          <span class="role-w">Artist</span>
+          <span class="role-sep">|</span>
+          <span class="role-w">Illustrator</span>
+          <span class="role-sep">|</span>
+          <span class="role-w">Animator</span>
         </div>
       </div>
       <div class="scroll-ind">
