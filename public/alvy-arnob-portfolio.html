@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+  <meta name="x-apple-disable-message-reformatting" content="true">
   <title>Alvy Arnob — Artist | Illustrator | Animator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1670,13 +1672,16 @@
       #page-home .hero {
         flex-direction: column;
         height: auto;
-        min-height: auto;
+        min-height: 560px;
       }
 
       .hero-content {
+        position: relative;
         flex: none;
-        padding: 36px 22px 36px;
+        width: 100%;
+        padding: 36px 22px 44px;
         order: 2;
+        justify-content: flex-start;
       }
 
       .hero-img-col {
@@ -1690,10 +1695,16 @@
         height: 100%;
       }
 
-      .hero-overlay,
       .scroll-ind {
         display: none;
       }
+
+      /* Keep the bg image visible behind stacked content on mobile */
+      .hero-bg-img { background-position: center 25%; }
+      .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%); }
+
+      .stat-label { color: var(--white) !important; }
+      .stat-num { color: var(--gold) !important; }
 
       .stats-bar {
         flex-direction: column;
