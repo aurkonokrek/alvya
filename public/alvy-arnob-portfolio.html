@@ -635,20 +635,20 @@
 
     .role-w {
       display: inline-block;
-      color: var(--gold);
+      color: #ffffff;
     }
 
-    /* stagger 0.8s apart exactly as Figma shows */
+    /* staggered gold sweep: Artist -> Illustrator -> Animator, then repeat */
     .role-w:nth-child(1) {
-      animation: roleColor 6s ease-in-out 2s infinite;
+      animation: roleColor 3s ease-in-out 0s infinite;
     }
 
     .role-w:nth-child(2) {
-      animation: roleColor 6s ease-in-out 2.8s infinite;
+      animation: roleColor 3s ease-in-out 1s infinite;
     }
 
     .role-w:nth-child(3) {
-      animation: roleColor 6s ease-in-out 3.6s infinite;
+      animation: roleColor 3s ease-in-out 2s infinite;
     }
 
     .role-sep {
@@ -656,22 +656,11 @@
     }
 
     @keyframes roleColor {
-      0% {
-        color: var(--gold);
-      }
-
-      15% {
-        color: #ffffff;
-      }
-
-      35% {
-        color: var(--gold);
-      }
-
-      100% {
-        color: var(--gold);
-      }
+      0%, 100% { color: #ffffff; }
+      15%, 28% { color: var(--gold); }
+      45% { color: #ffffff; }
     }
+
 
 
     /* ===== STATS ===== */
