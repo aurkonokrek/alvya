@@ -2035,6 +2035,82 @@
     .nav-work-wrapper .work-dropdown .nav-link {
       white-space: nowrap;
     }
+
+    /* ===== RESPONSIVE PASS — tablet/mobile refinements ===== */
+
+    /* Tablet (<=1024px) — soften large paddings, keep two-column feel */
+    @media (max-width: 1024px) {
+      .wp-header { padding: 44px 30px 12px; }
+      .wp-nav { gap: 14px; margin-bottom: 28px; }
+      .more-about-bg { background-position: center 30%; }
+    }
+
+    /* Tablet & below (<=900px) — collapse hw stacks cleanly */
+    @media (max-width: 900px) {
+      .hw-title { white-space: normal; }
+    }
+
+    /* Mobile (<=768px) — editorial achievements to single column, floating buttons safety */
+    @media (max-width: 768px) {
+      .hw-title { white-space: normal; font-size: clamp(24px, 7vw, 34px); word-break: break-word; }
+
+      /* Home work-teaser portrait card: keep proportionate, order text below image */
+      .carousel-wrap { max-width: 360px; width: 100%; }
+      .carousel-slide { aspect-ratio: 4 / 5; }
+      .hw-section, .hw-section.rev { align-items: stretch; }
+      .hw-section .carousel-wrap { order: 1; }
+      .hw-section .hw-text { order: 2; text-align: left !important; }
+
+      /* Work pages prev/next — ensure 44x44 touch, keep centered, don't overflow */
+      .wp-nav { gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+      .wp-arr { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+
+      /* More About — bring focal point higher so face isn't cropped */
+      .more-about { min-height: 380px; margin: 24px 14px; }
+      .more-about-inner { min-height: 380px; padding: 56px 22px; }
+      .more-about-bg { background-position: center 25%; }
+
+      /* Editorial achievements — single column, ordered, full-width media */
+      .ed-ach-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .ed-ach-card,
+      .ed-card-featured, .ed-card-tall, .ed-card-wide,
+      .ed-card-tall-r, .ed-card-small { grid-column: 1 / -1 !important; }
+      .ed-card-featured .ed-ach-media,
+      .ed-card-tall .ed-ach-media,
+      .ed-card-wide .ed-ach-media,
+      .ed-card-tall-r .ed-ach-media,
+      .ed-card-small .ed-ach-media { aspect-ratio: 4 / 3 !important; }
+      .ed-ach-kicker { font-size: 10.5px; letter-spacing: 0.24em; }
+      .ed-ach-lede { font-size: 15px !important; }
+      .ed-ach-title { font-size: clamp(20px, 5.2vw, 26px) !important; }
+      .ed-card-featured .ed-ach-title { font-size: clamp(22px, 6vw, 28px) !important; }
+
+      /* Floating buttons — comfortable safe-area, stacked, tappable */
+      .wa-float {
+        right: 16px; bottom: 16px;
+        padding: 10px 14px; font-size: 10.5px;
+        min-height: 44px;
+      }
+      .scroll-top {
+        right: 16px; bottom: 72px;
+        width: 44px; height: 44px;
+      }
+    }
+
+    /* Small mobile (<=480px) — extra safety-area, keep tappable */
+    @media (max-width: 480px) {
+      .wp-header { padding: 28px 16px 10px; }
+      .wp-nav { gap: 24px; }
+      .more-about { margin: 20px 10px; min-height: 340px; }
+      .more-about-inner { min-height: 340px; padding: 44px 18px; }
+      .more-about-bg { background-position: center 22%; }
+
+      .ed-ach-wrap { padding-left: 18px; padding-right: 18px; }
+      .ed-ach-text { padding: 18px 2px 0; }
+
+      .wa-float { right: 12px; bottom: 12px; }
+      .scroll-top { right: 12px; bottom: 66px; }
+    }
   </style>
 </head>
 
