@@ -126,11 +126,17 @@
     .nav-burger {
       display: none;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 5px;
       cursor: pointer;
       background: none;
       border: none;
       padding: 4px;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      z-index: 210;
     }
 
     .nav-burger span {
@@ -138,25 +144,107 @@
       width: 24px;
       height: 2px;
       background: var(--white);
-      transition: all .3s;
+      transition: transform .3s ease, opacity .2s ease;
+      transform-origin: center;
+    }
+
+    .nav-burger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-burger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-burger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     .nav-mobile {
       display: none;
       position: fixed;
-      top: var(--nav-h);
+      top: 0;
       left: 0;
       right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       background: #0a0a0a;
-      z-index: 199;
-      padding: 20px 32px;
+      z-index: 200;
+      padding: calc(var(--nav-h) + 40px) 32px 40px;
       flex-direction: column;
-      gap: 24px;
-      border-top: 1px solid #222;
+      align-items: flex-start;
+      gap: 28px;
+      overflow-y: auto;
     }
 
     .nav-mobile.open {
       display: flex;
+    }
+
+    .nav-mobile .nav-link {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--white);
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .nav-mobile .nav-link:hover,
+    .nav-mobile .nav-link:active {
+      color: var(--gold);
+    }
+
+    .nav-mobile-works {
+      width: 100%;
+    }
+    .nav-mobile-works-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color .2s;
+    }
+    .nav-mobile-works-toggle:hover,
+    .nav-mobile-works.open .nav-mobile-works-toggle {
+      color: var(--gold);
+    }
+    .nav-mobile-works-toggle .chev {
+      display: inline-block;
+      transition: transform .3s ease;
+      font-size: 16px;
+      margin-left: 12px;
+    }
+    .nav-mobile-works.open .nav-mobile-works-toggle .chev {
+      transform: rotate(180deg);
+    }
+    .nav-mobile-sub {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 0 4px 20px;
+      border-left: 1px solid #222;
+      margin-top: 16px;
+    }
+    .nav-mobile-works.open .nav-mobile-sub {
+      display: flex;
+    }
+    .nav-mobile-sub .nav-link {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: #cfcfcf;
     }
 
     /* ===== PAGE SYSTEM ===== */
@@ -2157,7 +2245,16 @@
     <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </nav>
   <div class="nav-mobile" id="navMob">
-    <a class="nav-link" onclick="goPage('home');toggleNav()">Works</a>
+    <div class="nav-mobile-works" id="navMobWorks">
+      <button type="button" class="nav-mobile-works-toggle" onclick="toggleMobileWorks(event)">
+        <span>Works</span><span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-mobile-sub">
+        <a class="nav-link" onclick="goPage('traditional');toggleNav()">Traditional Work</a>
+        <a class="nav-link" onclick="goPage('digital');toggleNav()">Digital Work</a>
+        <a class="nav-link" onclick="goPage('animation');toggleNav()">Animation Work</a>
+      </div>
+    </div>
     <a class="nav-link" onclick="goPage('about');toggleNav()">About Me</a>
     <a class="nav-link" onclick="goPage('contact');toggleNav()">Contact</a>
   </div>
@@ -3041,7 +3138,22 @@
       window.scrollTo({ top: 0, behavior: 'instant' });
       setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); }, 60);
     }
-    function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
+    function toggleNav() {
+      var nav = document.getElementById('navMob');
+      var burger = document.querySelector('.nav-burger');
+      var isOpen = nav.classList.toggle('open');
+      if (burger) burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (!isOpen) {
+        var w = document.getElementById('navMobWorks');
+        if (w) w.classList.remove('open');
+      }
+    }
+    function toggleMobileWorks(e) {
+      if (e) e.preventDefault();
+      var w = document.getElementById('navMobWorks');
+      if (w) w.classList.toggle('open');
+    }
     function toggleWorks(e) {
       e.stopPropagation();
       document.getElementById('navWorkWrap').classList.toggle('open');
