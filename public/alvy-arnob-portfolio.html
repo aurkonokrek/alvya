@@ -552,12 +552,11 @@
       color: var(--white);
     }
 
-    /* ARNOB: pops up from below, then loops gold ↔ white */
+    /* ARNOB: mask handles entry; keep gold ↔ white loop */
     .hero-arnob {
       color: var(--gold);
       display: inline-block;
-      animation: arnobPop 1.1s cubic-bezier(.22, .68, 0, 1.2) .5s both,
-        arnobColor 3.5s ease-in-out 1.8s infinite;
+      animation: arnobColor 3.5s ease-in-out 1.8s infinite;
       transform-origin: center bottom;
     }
 
