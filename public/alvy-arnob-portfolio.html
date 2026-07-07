@@ -552,11 +552,12 @@
       color: var(--white);
     }
 
-    /* ARNOB: mask handles entry; keep gold ↔ white loop */
+    /* ARNOB: gold ↔ white loop (entry handled by .figma-masked-text) */
     .hero-arnob {
       color: var(--gold);
       display: inline-block;
-      animation: arnobColor 3.5s ease-in-out 1.8s infinite;
+      animation: figmaSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both,
+        arnobColor 3.5s ease-in-out 1.8s infinite;
       transform-origin: center bottom;
     }
 
