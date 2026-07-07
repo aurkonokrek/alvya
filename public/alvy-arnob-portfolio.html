@@ -532,90 +532,85 @@
       color: var(--white);
     }
 
-    /* ARNOB: two-toned letters (gold + white) dropping in together, looping */
+    /* ARNOB: GIF-style loop — rests gold, jumps up, drops white, turns gold */
     .hero-arnob {
-      display: inline-flex;
-      line-height: 1;
-    }
-
-    .hero-arnob .al {
+      color: var(--gold);
       display: inline-block;
-      transform-origin: center bottom;
-      will-change: transform, opacity, filter;
-      animation: arnobDrop 4.8s cubic-bezier(.22, 1.3, .36, 1) infinite both;
+      transform-origin: center top;
+      will-change: transform, color, opacity;
+      animation: arnobLoop 8.4s linear .35s infinite both;
     }
 
-    /* Alternating two-tone paint — stays constant, no color-change mid-flight */
-    .hero-arnob .al-1,
-    .hero-arnob .al-3,
-    .hero-arnob .al-5 { color: var(--gold); }
-
-    .hero-arnob .al-2,
-    .hero-arnob .al-4 { color: #ffffff; }
-
-    /* Per-letter stagger so the word feels like it's raining into place */
-    .hero-arnob .al-1 { animation-delay: .30s; }
-    .hero-arnob .al-2 { animation-delay: .42s; }
-    .hero-arnob .al-3 { animation-delay: .54s; }
-    .hero-arnob .al-4 { animation-delay: .66s; }
-    .hero-arnob .al-5 { animation-delay: .78s; }
-
-    @keyframes arnobDrop {
-      /* start above, invisible, tilted */
+    @keyframes arnobLoop {
       0% {
-        opacity: 0;
-        transform: translateY(-1.2em) scale(1.15) rotate(-6deg);
-        filter: blur(6px);
-      }
-
-      /* fall in */
-      12% {
         opacity: 1;
-        transform: translateY(-.35em) scale(1.08) rotate(-2deg);
-        filter: blur(0);
+        transform: translateY(0) scale(1);
+        color: var(--gold);
       }
 
-      /* impact — squash */
+      13% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
+        animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+      }
+
+      17% {
+        opacity: 1;
+        transform: translateY(-.72em) scale(1.08);
+        color: var(--gold);
+        animation-timing-function: cubic-bezier(.12, .8, .2, 1.08);
+      }
+
       18% {
-        opacity: 1;
-        transform: translateY(.08em) scale(1.06, .9) rotate(0);
-      }
-
-      /* rebound — stretch */
-      24% {
-        transform: translateY(-.14em) scale(.97, 1.05) rotate(0);
-      }
-
-      /* second, softer bounce */
-      30% {
-        transform: translateY(.04em) scale(1.01, .99) rotate(0);
-      }
-
-      /* settled hold */
-      36%, 88% {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotate(0);
-        filter: blur(0);
-      }
-
-      /* lift off subtly before the loop repeats */
-      96% {
         opacity: 0;
-        transform: translateY(-.5em) scale(1.05) rotate(-3deg);
-        filter: blur(3px);
+        transform: translateY(-1.1em) scale(1.16);
+        color: #ffffff;
+      }
+
+      20.5% {
+        opacity: 1;
+        transform: translateY(-.18em) scale(1.07);
+        color: #ffffff;
+      }
+
+      23% {
+        opacity: 1;
+        transform: translateY(.05em) scale(1.02);
+        color: #ffffff;
+      }
+
+      26% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+      }
+
+      31% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+        animation-timing-function: step-end;
+      }
+
+      31.9% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+      }
+
+      32% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
       }
 
       100% {
-        opacity: 0;
-        transform: translateY(-1.2em) scale(1.15) rotate(-6deg);
-        filter: blur(6px);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
       }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-arnob .al { animation: none; opacity: 1; transform: none; filter: none; }
-    }
-
 
 
 
@@ -2115,7 +2110,7 @@
       <div class="hero-content">
         <div class="hero-name">
           <span class="hero-alvy">ALVY</span>
-          <span class="hero-arnob" aria-label="ARNOB"><span class="al al-1">A</span><span class="al al-2">R</span><span class="al al-3">N</span><span class="al al-4">O</span><span class="al al-5">B</span></span>
+          <span class="hero-arnob">ARNOB</span>
         </div>
         <div class="hero-sub">
           <span class="role-w">Artist</span>
