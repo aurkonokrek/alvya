@@ -499,7 +499,7 @@
       }
     }
 
-    /* ===== HERO NAME — staggered masked slide-up reveal ===== */
+    /* ===== HERO NAME — layout (staggered/overlapping composition) ===== */
     .hero-name {
       font-family: 'DM Serif Display', serif;
       font-weight: 400;
@@ -513,34 +513,7 @@
       overflow: visible;
     }
 
-    /* Creates the invisible bounding box for the text to hide behind */
-    .reveal-mask {
-      overflow: hidden;
-      display: block;
-      line-height: 1.1;
-      padding: 0 .05em .04em;
-      margin: 0 -.05em;
-    }
-
-    /* Pushes the text down initially, then animates it up */
-    .reveal-text {
-      display: block;
-      transform: translateY(110%);
-      animation: slideUpReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      will-change: transform;
-    }
-
-    /* Staggered Timings */
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.3s; }
-    .stagger-3 { animation-delay: 0.5s; }
-
-    @keyframes slideUpReveal {
-      0%   { transform: translateY(110%); }
-      100% { transform: translateY(0); }
-    }
-
-    /* ARNOB sits above ALVY, offset to the right for a staggered composition */
+    /* ARNOB sits above ALVY, offset to the right */
     .hero-arnob-mask {
       align-self: flex-start;
       margin-left: clamp(60px, 14vw, 200px);
@@ -576,6 +549,11 @@
       color: var(--gold);
       opacity: .7;
       margin: 0 .35em;
+    }
+
+    @keyframes textSlideUp {
+      0%   { transform: translateY(110%); }
+      100% { transform: translateY(0); }
     }
 
     /* ===== STATS ===== */
