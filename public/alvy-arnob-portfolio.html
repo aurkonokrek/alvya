@@ -532,46 +532,61 @@
       color: var(--white);
     }
 
-    /* ARNOB: drops from above in white, holds ~1s, then turns gold */
+    /* ARNOB: infinite loop — drops from above in white, settles, turns gold, holds, repeats */
     .hero-arnob {
       color: #ffffff;
       display: inline-block;
-      animation: arnobDrop .9s cubic-bezier(.22, .68, 0, 1.2) .6s both,
-        arnobToGold .6s ease-in-out 2.5s both;
       transform-origin: center top;
-      will-change: transform, color;
+      will-change: transform, color, opacity;
+      animation: arnobLoop 7s cubic-bezier(.22, .68, 0, 1.2) .4s infinite both;
     }
 
-    @keyframes arnobDrop {
+    @keyframes arnobLoop {
       0% {
         opacity: 0;
-        transform: translateY(-100px) scale(.92);
-      }
-
-      65% {
-        opacity: 1;
-        transform: translateY(12px) scale(1.03);
-      }
-
-      82% {
-        transform: translateY(-5px) scale(.99);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes arnobToGold {
-      0% {
+        transform: translateY(-110px) scale(1.15);
         color: #ffffff;
       }
 
-      100% {
+      6% {
+        opacity: 1;
+        color: #ffffff;
+      }
+
+      14% {
+        opacity: 1;
+        transform: translateY(8px) scale(1.03);
+        color: #ffffff;
+      }
+
+      20% {
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+      }
+
+      35% {
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+      }
+
+      50% {
+        transform: translateY(0) scale(1);
         color: var(--gold);
       }
+
+      90% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-110px) scale(1.15);
+        color: #ffffff;
+      }
     }
+
 
 
 
