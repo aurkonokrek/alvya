@@ -2025,10 +2025,12 @@
       transition: opacity 1000ms linear;
     }
 
-    .nav-work-wrapper:hover .work-dropdown {
+    .nav-work-wrapper:hover .work-dropdown,
+    .nav-work-wrapper.open .work-dropdown {
       opacity: 1;
       pointer-events: auto;
     }
+
 
     .nav-work-wrapper .work-dropdown .nav-link {
       white-space: nowrap;
