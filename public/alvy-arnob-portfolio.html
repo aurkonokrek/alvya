@@ -557,46 +557,34 @@
       color: var(--gold);
       display: inline-block;
       animation: figmaSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both,
-        arnobColor 3.5s ease-in-out 1.8s infinite;
+        arnobBounce 2.2s ease-in-out 1.2s infinite;
       transform-origin: center bottom;
+      will-change: transform, color;
     }
 
-    @keyframes arnobPop {
+    @keyframes arnobBounce {
       0% {
-        opacity: 0;
-        transform: translateY(60px) scale(.85);
+        transform: translateY(0);
+        color: var(--gold);
       }
-
-      60% {
-        transform: translateY(-8px) scale(1.04);
+      25% {
+        transform: translateY(-22px);
+        color: var(--white);
       }
-
-      80% {
-        transform: translateY(3px) scale(.99);
+      50% {
+        transform: translateY(0);
+        color: var(--white);
       }
-
+      75% {
+        transform: translateY(-22px);
+        color: var(--gold);
+      }
       100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
+        color: var(--gold);
       }
     }
 
-    @keyframes arnobColor {
-      0% {
-        color: var(--gold);
-      }
-
-      35% {
-        color: var(--white);
-      }
-
-      55% {
-        color: var(--white);
-      }
-
-      85% {
-        color: var(--gold);
-      }
 
       100% {
         color: var(--gold);
