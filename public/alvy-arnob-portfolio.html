@@ -532,49 +532,55 @@
       color: var(--white);
     }
 
-    /* ARNOB: GIF-style loop — drops from above in white, holds, turns gold, repeats */
+    /* ARNOB: GIF-style loop — rests gold, jumps up, drops white, turns gold */
     .hero-arnob {
-      color: #ffffff;
+      color: var(--gold);
       display: inline-block;
       transform-origin: center top;
       will-change: transform, color, opacity;
-      animation: arnobLoop 8s linear .35s infinite both;
+      animation: arnobLoop 8.4s linear .35s infinite both;
     }
 
     @keyframes arnobLoop {
       0% {
-        opacity: 0;
-        transform: translateY(-1.15em) scale(1.18);
-        color: #ffffff;
-        animation-timing-function: cubic-bezier(.18, .82, .26, 1.08);
-      }
-
-      5% {
-        opacity: 1;
-        transform: translateY(-.12em) scale(1.08);
-        color: #ffffff;
-      }
-
-      8.5% {
-        opacity: 1;
-        transform: translateY(.06em) scale(1.02);
-        color: #ffffff;
-      }
-
-      12% {
         opacity: 1;
         transform: translateY(0) scale(1);
+        color: var(--gold);
+      }
+
+      13% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
+        animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+      }
+
+      17% {
+        opacity: 1;
+        transform: translateY(-.72em) scale(1.08);
+        color: var(--gold);
+        animation-timing-function: cubic-bezier(.12, .8, .2, 1.08);
+      }
+
+      18% {
+        opacity: 0;
+        transform: translateY(-1.1em) scale(1.16);
+        color: #ffffff;
+      }
+
+      20.5% {
+        opacity: 1;
+        transform: translateY(-.18em) scale(1.07);
         color: #ffffff;
       }
 
       23% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(.05em) scale(1.02);
         color: #ffffff;
-        animation-timing-function: step-end;
       }
 
-      30.9% {
+      26% {
         opacity: 1;
         transform: translateY(0) scale(1);
         color: #ffffff;
@@ -583,25 +589,26 @@
       31% {
         opacity: 1;
         transform: translateY(0) scale(1);
-        color: var(--gold);
+        color: #ffffff;
+        animation-timing-function: step-end;
       }
 
-      94% {
+      31.9% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: #ffffff;
+      }
+
+      32% {
         opacity: 1;
         transform: translateY(0) scale(1);
         color: var(--gold);
       }
 
-      96% {
-        opacity: 0;
-        transform: translateY(-1.15em) scale(1.18);
-        color: #ffffff;
-      }
-
       100% {
-        opacity: 0;
-        transform: translateY(-1.15em) scale(1.18);
-        color: #ffffff;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: var(--gold);
       }
     }
 
