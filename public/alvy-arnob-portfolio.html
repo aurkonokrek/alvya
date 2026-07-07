@@ -853,34 +853,43 @@
     .wp-nav {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 36px;
     }
 
     .wp-arr {
-      width: 26px;
-      height: 26px;
-      background: none;
-      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid #BF9049;
+      color: #BF9049;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: opacity .2s;
-      opacity: 0.8;
       padding: 0;
+      transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s ease;
     }
 
-    .wp-arr.act,
-    .wp-arr:hover {
-      opacity: 1;
+    .wp-arr:hover,
+    .wp-arr:focus-visible {
+      border-color: #f0c97a;
+      color: #f0c97a;
+      background-color: rgba(240, 201, 122, 0.08);
+      outline: none;
     }
 
     .wp-arr svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--white);
-      stroke: none;
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
     }
 
     .wp-desc {
