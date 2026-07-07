@@ -2025,10 +2025,12 @@
       transition: opacity 1000ms linear;
     }
 
-    .nav-work-wrapper:hover .work-dropdown {
+    .nav-work-wrapper:hover .work-dropdown,
+    .nav-work-wrapper.open .work-dropdown {
       opacity: 1;
       pointer-events: auto;
     }
+
 
     .nav-work-wrapper .work-dropdown .nav-link {
       white-space: nowrap;
@@ -2051,8 +2053,9 @@
   <nav class="navbar">
     <a class="nav-logo" onclick="goPage('home')">ALVY <span>ARNOB</span></a>
     <div class="nav-links">
-      <div class="nav-work-wrapper">
-        <a class="nav-link" onclick="goPage('home')">Works</a>
+      <div class="nav-work-wrapper" id="navWorkWrap">
+        <a class="nav-link" onclick="toggleWorks(event)">Works</a>
+
         <div class="work-dropdown">
           <a class="nav-link" onclick="goPage('traditional')">Traditional Work</a>
           <a class="nav-link" onclick="goPage('digital')">Digital Work</a>
@@ -2950,6 +2953,14 @@
       setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); }, 60);
     }
     function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
+    function toggleWorks(e) {
+      e.stopPropagation();
+      document.getElementById('navWorkWrap').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      var w = document.getElementById('navWorkWrap');
+      if (w && !w.contains(e.target)) w.classList.remove('open');
+    });
     function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     function hwGo(e, name) {
       if (e && e.target && e.target.closest('.c-arrow, .c-dot')) return;
