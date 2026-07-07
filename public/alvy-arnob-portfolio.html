@@ -2906,6 +2906,10 @@
     }
     function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
     function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function hwGo(e, name) {
+      if (e && e.target && e.target.closest('.c-arrow, .c-dot')) return;
+      goPage(name);
+    }
     (function initScrollTopVisibility(){
       const btn = document.querySelector('.scroll-top');
       if (!btn) return;
