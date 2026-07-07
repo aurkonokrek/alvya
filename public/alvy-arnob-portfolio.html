@@ -3102,68 +3102,7 @@
     </div>
   </div>
 
-  <!-- ACHIEVEMENT MODAL -->
-  <div id="achievement-modal" style="display: none; opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 9999; overflow-y: auto; transition: opacity 250ms ease;">
-    <button aria-label="Close achievements" onclick="closeAchModal()" style="position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #BF9049; font-size: 2.25rem; line-height: 1; cursor: pointer; z-index: 10000; transition: transform 250ms ease, color 250ms ease;" onmouseover="this.style.transform='rotate(90deg)';this.style.color='#f0c97a';" onmouseout="this.style.transform='rotate(0)';this.style.color='#BF9049';">&times;</button>
-
-    <style>
-      .ach-modal-wrap { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; margin-top: 1rem; }
-      .ach-modal-title { color: #BF9049; font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.75rem, 3.2vw, 2.5rem); margin-bottom: 4rem; text-align: center; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 400; }
-      .ach-modal-grid { display: grid; grid-template-columns: 1fr; gap: 5rem; }
-      .ach-row { display: flex; flex-direction: column; gap: 2.5rem; align-items: center; }
-      .ach-col { width: 100%; }
-      .ach-img { width: 100%; border-radius: 2px; object-fit: cover; aspect-ratio: 16 / 10; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: block; transition: transform 300ms ease; }
-      .ach-row:hover .ach-img { transform: scale(1.01); }
-      .ach-tag { color: #BF9049; font-family: 'Nunito Sans', sans-serif; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.22em; margin-bottom: 0.75rem; text-transform: uppercase; }
-      .ach-h2 { color: #fff; font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.5rem, 2.4vw, 1.875rem); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.01em; }
-      .ach-desc { color: #d1d5db; line-height: 1.75; font-size: 1.0625rem; font-family: 'Nunito Sans', sans-serif; font-weight: 400; }
-
-      @media (min-width: 768px) {
-        .ach-row { flex-direction: row; }
-        .ach-row.reverse { flex-direction: row-reverse; }
-        .ach-col { width: 50%; }
-      }
-    </style>
-    <div class="ach-modal-wrap">
-      <h1 class="ach-modal-title">All Achievements & Awards</h1>
-      <div class="ach-modal-grid">
-
-        <div class="ach-row">
-          <div class="ach-col">
-            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Film+Festival" alt="Film Festival" class="ach-img" />
-          </div>
-          <div class="ach-col">
-            <p class="ach-tag">FINALIST 2024</p>
-            <h2 class="ach-h2">Animation Short — Film Festival</h2>
-            <p class="ach-desc">Finalist at the South Asian Animation Festival for an original 2D animated short film. This project took over six months of dedicated frame-by-frame illustration, capturing the essence of local folklore and bringing it to the big screen.</p>
-          </div>
-        </div>
-
-        <div class="ach-row reverse">
-          <div class="ach-col">
-            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Published+Book" alt="Book Publication" class="ach-img" />
-          </div>
-          <div class="ach-col">
-            <p class="ach-tag">PUBLISHED 2021</p>
-            <h2 class="ach-h2">Published Children's Book</h2>
-            <p class="ach-desc">Illustrated a nationally distributed children's book series, reaching thousands of young readers. The illustrations focused on vibrant colors and expressive characters to help teach early reading fundamentals.</p>
-          </div>
-        </div>
-
-        <div class="ach-row">
-          <div class="ach-col">
-            <img src="https://placehold.co/800x500/2a2a2a/bf9049?text=Art+Exhibition" alt="Art Exhibition" class="ach-img" />
-          </div>
-          <div class="ach-col">
-            <p class="ach-tag">EXHIBITION 2019</p>
-            <h2 class="ach-h2">National Art Gallery Showcase</h2>
-            <p class="ach-desc">Featured artist in the annual contemporary illustration exhibition. Showcased a series of traditional ink and oil paintings exploring maternal earth archetypes and natural environments.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <!-- ACHIEVEMENT MODAL removed — achievements now render inline on About page -->
 
   <!-- ===== POLISH OVERRIDES ===== -->
   <style>
@@ -3172,35 +3111,7 @@
     .aspect-video, [class*="bg-gradient-to"] { transition: transform 400ms ease, box-shadow 400ms ease, border-color 400ms ease; }
     .aspect-video:hover, [class*="bg-gradient-to"]:hover { box-shadow: 0 12px 32px rgba(191,144,73,0.08); }
     h1, h2, h3, .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
-    #achievement-modal.is-open { display: block !important; opacity: 1 !important; }
-    #achievement-modal .ach-modal-wrap { animation: achRise 400ms ease both; }
-    @keyframes achRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-    body.modal-open { overflow: hidden; }
-    @media (max-width: 720px) {
-      #achievement-modal .ach-modal-wrap { padding: 4rem 1.25rem; }
-    }
   </style>
-  <script>
-    (function () {
-      var modal = document.getElementById('achievement-modal');
-      window.openAchModal = function () {
-        if (!modal) return;
-        modal.style.display = 'block';
-        requestAnimationFrame(function () { modal.classList.add('is-open'); });
-        document.body.classList.add('modal-open');
-      };
-      window.closeAchModal = function () {
-        if (!modal) return;
-        modal.classList.remove('is-open');
-        modal.style.opacity = '0';
-        document.body.classList.remove('modal-open');
-        setTimeout(function () { modal.style.display = 'none'; }, 250);
-      };
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) window.closeAchModal();
-      });
-    })();
-  </script>
 </body>
 
 </html>
