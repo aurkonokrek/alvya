@@ -2961,7 +2961,7 @@
       var w = document.getElementById('navWorkWrap');
       if (w && !w.contains(e.target)) w.classList.remove('open');
     });
-    function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     function hwGo(e, name) {
       if (e && e.target && e.target.closest('.c-arrow, .c-dot')) return;
       goPage(name);
