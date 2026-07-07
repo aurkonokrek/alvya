@@ -1672,36 +1672,30 @@
       #page-home .hero {
         flex-direction: column;
         height: auto;
-        min-height: 560px;
+        min-height: 520px;
       }
 
+      /* Overlay text at the BOTTOM of the hero image on mobile */
       .hero-content {
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         flex: none;
         width: 100%;
-        padding: 36px 22px 44px;
-        order: 2;
-        justify-content: flex-start;
+        padding: 0 22px 40px;
+        justify-content: flex-end;
+        z-index: 3;
       }
 
-      .hero-img-col {
-        flex: none;
-        height: 260px;
-        width: 100%;
-        order: 1;
-      }
+      .hero-img-col { display: none; }
+      .hero-img-inner { display: none; }
 
-      .hero-img-inner {
-        height: 100%;
-      }
-
-      .scroll-ind {
-        display: none;
-      }
+      .scroll-ind { display: none; }
 
       /* Keep the bg image visible behind stacked content on mobile */
       .hero-bg-img { background-position: center 25%; }
-      .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%); }
+      .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.25) 100%); }
 
       .stat-label { color: var(--white) !important; }
       .stat-num { color: var(--gold) !important; }
@@ -2065,12 +2059,16 @@
     @media (max-width: 768px) {
       .hw-title { white-space: normal; font-size: clamp(24px, 7vw, 34px); word-break: break-word; }
 
-      /* Home work-teaser portrait card: keep proportionate, order text below image */
+      /* Home work-teaser: TEXT above, IMAGE below, left-aligned across all three sections */
       .carousel-wrap { max-width: 360px; width: 100%; }
       .carousel-slide { aspect-ratio: 4 / 5; }
       .hw-section, .hw-section.rev { align-items: stretch; }
-      .hw-section .carousel-wrap { order: 1; }
-      .hw-section .hw-text { order: 2; text-align: left !important; }
+      .hw-section .hw-text,
+      .hw-section.rev .hw-text { order: 1; text-align: left !important; }
+      .hw-section .hw-text > *,
+      .hw-section.rev .hw-text > * { text-align: left !important; }
+      .hw-section .carousel-wrap,
+      .hw-section.rev .carousel-wrap { order: 2; }
 
       /* Work pages prev/next — ensure 44x44 touch, keep centered, don't overflow */
       .wp-nav { gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
@@ -2106,6 +2104,9 @@
         right: 16px; bottom: 72px;
         width: 44px; height: 44px;
       }
+
+      /* Prevent fixed WhatsApp + scroll-to-top buttons overlapping footer content */
+      .footer { padding-bottom: 140px; }
     }
 
     /* Small mobile (<=480px) — extra safety-area, keep tappable */
@@ -2121,6 +2122,7 @@
 
       .wa-float { right: 12px; bottom: 12px; }
       .scroll-top { right: 12px; bottom: 66px; }
+      .footer { padding-bottom: 130px; }
     }
   </style>
 </head>
