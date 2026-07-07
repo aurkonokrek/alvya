@@ -2953,6 +2953,14 @@
       setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); }, 60);
     }
     function toggleNav() { document.getElementById('navMob').classList.toggle('open'); }
+    function toggleWorks(e) {
+      e.stopPropagation();
+      document.getElementById('navWorkWrap').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      var w = document.getElementById('navWorkWrap');
+      if (w && !w.contains(e.target)) w.classList.remove('open');
+    });
     function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     function hwGo(e, name) {
       if (e && e.target && e.target.closest('.c-arrow, .c-dot')) return;
