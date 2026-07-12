@@ -832,6 +832,64 @@
       margin-bottom: 32px;
     }
 
+    /* ===== FEATURED WORK — Full-width video banner ===== */
+    .feat-banner-section {
+      padding: 80px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .feat-banner-text {
+      max-width: 780px;
+    }
+    .feat-banner-text .hw-title { margin-bottom: 14px; }
+    .feat-banner-text .hw-body { margin-bottom: 22px; }
+    .feat-banner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .feat-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .45s ease;
+      pointer-events: none;
+    }
+    .feat-slide.act { opacity: 1; }
+    .feat-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .feat-banner-gradient {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 30%;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+      pointer-events: none;
+      z-index: 2;
+    }
+    .feat-banner-dots {
+      position: absolute;
+      left: 0; right: 0; bottom: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 3;
+    }
+    .feat-banner-dots .c-dot { cursor: pointer; }
+    @media (max-width: 768px) {
+      .feat-banner-section { padding: 40px 14px; gap: 22px; }
+      .feat-banner { aspect-ratio: 16 / 9; }
+      .feat-banner-dots { bottom: 12px; }
+
+
     /* ===== CAROUSEL ===== */
     .carousel-wrap {
       flex: 0 0 clamp(280px, 38%, 460px);
