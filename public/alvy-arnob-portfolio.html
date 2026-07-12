@@ -2497,12 +2497,12 @@
     </div>
   </div>
 
-  <!-- ============ TRADITIONAL WORK ============ -->
-  <div id="page-traditional" class="page">
+  <!-- ============ FEATURED WORK ============ -->
+  <div id="page-featured" class="page">
     <div class="wp-header rev-up">
-      <div class="wp-title"><span class="l1">Traditional</span><span class="l2">Work</span></div>
+      <div class="wp-title"><span class="l1">Featured</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
-        <button class="wp-arr" onclick="goPage('animation')" aria-label="Previous work category">
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
         <button class="wp-arr" onclick="goPage('digital')" aria-label="Next work category">
@@ -2510,10 +2510,9 @@
         </button>
       </div>
     </div>
-    <p class="wp-desc rev-up">I have been drawing since childhood and my love for art has only grown with time.
-      Traditional work has always been my foundation. My work includes detailed fantasy inking, playful doodles, oil
-      paintings, tattoo designs and character drawings. For me, traditional art is more than just a skill — it is a
-      lifelong journey.</p>
+    <p class="wp-desc rev-up">A curated selection of my strongest work across mediums. Featured Work brings together highlights from
+      traditional illustration, digital art, and animation — pieces that best represent my style, range, and
+      craft.</p>
     <div class="gal-wrap">
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -2570,10 +2569,10 @@
     <div class="wp-header rev-up">
       <div class="wp-title"><span class="l1">Digital</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
-        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Previous work category">
+        <button class="wp-arr" onclick="goPage('featured')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('animation')" aria-label="Next work category">
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Next work category">
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
@@ -2632,22 +2631,23 @@
     </div>
   </div>
 
-  <!-- ============ ANIMATION WORK ============ -->
-  <div id="page-animation" class="page">
+  <!-- ============ TRADITIONAL WORK ============ -->
+  <div id="page-traditional" class="page">
     <div class="wp-header rev-up">
-      <div class="wp-title"><span class="l1">Animation</span><span class="l2">Work</span></div>
+      <div class="wp-title"><span class="l1">Traditional</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
         <button class="wp-arr" onclick="goPage('digital')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Next work category">
+        <button class="wp-arr" onclick="goPage('featured')" aria-label="Next work category">
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
     </div>
-    <p class="wp-desc rev-up">Animation breathes life into characters and stories. From 2D character animation to full
-      sequences, I work across diverse styles and techniques. Every frame is crafted with attention to movement,
-      expression, and timing.</p>
+    <p class="wp-desc rev-up">I have been drawing since childhood and my love for art has only grown with time.
+      Traditional work has always been my foundation. My work includes detailed fantasy inking, playful doodles, oil
+      paintings, tattoo designs and character drawings. For me, traditional art is more than just a skill — it is a
+      lifelong journey.</p>
     <div class="gal-wrap">
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -3291,7 +3291,7 @@
 
     /* ===== AUTO CAROUSELS ===== */
     function startAuto() {
-      ['c-trad', 'c-dig', 'c-anim'].forEach((id, offset) => {
+      ['c-feat', 'c-dig', 'c-trad'].forEach((id, offset) => {
         setInterval(() => {
           if (document.getElementById('page-home').classList.contains('active')) cMove(id, 1);
         }, 3400 + offset * 300);
@@ -3306,7 +3306,7 @@
       if (!page) return;
       let pageKey = 'traditional';
       if (page.id === 'page-digital') pageKey = 'digital';
-      else if (page.id === 'page-animation') pageKey = 'animation';
+      else if (page.id === 'page-featured') pageKey = 'featured';
       page.querySelectorAll('.gal-item').forEach((el, i) => {
         el.onclick = () => openLightbox(pageKey, i);
       });
@@ -3333,14 +3333,14 @@
         { tag: 'Digital • Fan Art', title: 'Fan Illustration', desc: 'Personal fan art project — a creative exercise in style exploration and colour theory.' },
         { tag: 'Digital • Studies', title: 'Digital Studies', desc: 'A collection of digital studies from reference — training the eye and hand simultaneously.' },
       ],
-      animation: [
-        { tag: 'Animation • 2D', title: 'Character Walk Cycle', desc: 'Classic 2D walk cycle animation demonstrating weight, personality, and timing principles.' },
-        { tag: 'Animation • Short', title: 'Animated Short Clip', desc: 'Sequence from an original animated short — rough animation stage with inbetweens.' },
-        { tag: 'Animation • Loop', title: 'Seamless Loop', desc: 'Atmospheric looping animation designed for motion graphics and social media content.' },
-        { tag: 'Animation • Lip Sync', title: 'Lip Sync Study', desc: 'Dialogue animation study focusing on mouth shapes, timing, and secondary motion.' },
-        { tag: 'Animation • Expression', title: 'Emotion Sequence', desc: 'Animation exploring a full emotional arc — joy, surprise, sadness — in a single continuous scene.' },
-        { tag: 'Animation • Action', title: 'Action Sequence', desc: 'Dynamic action animation with squash & stretch, anticipation, and follow-through principles.' },
-        { tag: 'Animation • Experimental', title: 'Experimental Piece', desc: 'Abstract motion experiment blending traditional frame-by-frame technique with digital compositing.' },
+      featured: [
+        { tag: 'Featured • Illustration', title: 'Signature Fantasy Ink', desc: 'A standout fantasy inking piece — one of the strongest examples of detailed pen work from the traditional portfolio.' },
+        { tag: 'Featured • Digital', title: 'Hero Character Art', desc: 'A fully rendered digital character illustration selected as a highlight from the digital portfolio.' },
+        { tag: 'Featured • Concept', title: 'Cinematic Environment', desc: 'Environment concept art with rich atmosphere and colour — a favourite from recent digital work.' },
+        { tag: 'Featured • Portrait', title: 'Expressive Portrait', desc: 'Stylised portrait combining traditional draftsmanship with bold digital colour.' },
+        { tag: 'Featured • Painting', title: 'Oil Study Highlight', desc: 'A featured oil painting exploring dramatic lighting — a standout from the traditional body of work.' },
+        { tag: 'Featured • Design', title: 'Poster Highlight', desc: 'Poster design merging illustration and typography — one of the strongest graphic pieces to date.' },
+        { tag: 'Featured • Character', title: 'Signature Character', desc: 'A defining character design combining costume, expression, and personality across mediums.' },
       ]
     };
 
