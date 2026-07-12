@@ -3285,12 +3285,6 @@
           <use href="#ph" />
         </svg>
       </div>
-      <div class="lightbox-details">
-        <div class="lightbox-details-tag" id="lbTag">Traditional Work</div>
-        <div class="lightbox-details-title" id="lbTitle">Artwork Title</div>
-        <div class="lightbox-details-desc" id="lbDesc">Click on any artwork to view its details here. Each piece tells a
-          unique story crafted with care and artistic vision.</div>
-      </div>
     </div>
   </div>
 
@@ -3533,10 +3527,7 @@
     }
 
     function renderLightbox() {
-      const item = lbItems[lbCurrent];
-      document.getElementById('lbTag').textContent = item.tag;
-      document.getElementById('lbTitle').textContent = item.title;
-      document.getElementById('lbDesc').textContent = item.desc;
+      // Traditional/Digital lightbox: image-only, no captions.
     }
 
     // Close on overlay click
