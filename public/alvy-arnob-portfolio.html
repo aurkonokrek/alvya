@@ -1075,17 +1075,15 @@
       margin-bottom: 12px;
     }
 
-    .gal-3 .gal-item {
-      height: clamp(180px, 28vw, 480px);
+    .gal-3 .gal-item,
+    .gal-1 .gal-item {
+      aspect-ratio: 4 / 5;
+      height: auto;
+      width: 100%;
     }
 
     .gal-1 {
       margin-bottom: 12px;
-    }
-
-    .gal-1 .gal-item {
-      height: clamp(180px, 26vw, 460px);
-      width: 100%;
     }
 
     .gal-item {
@@ -1095,14 +1093,7 @@
       justify-content: center;
       overflow: hidden;
       cursor: pointer;
-      transition: transform .35s cubic-bezier(.22, .68, 0, 1.2), box-shadow .35s;
       position: relative;
-    }
-
-    .gal-item:hover {
-      transform: scale(1.025);
-      box-shadow: 0 12px 40px rgba(191, 144, 73, .15);
-      z-index: 2;
     }
 
     .gal-item svg {
@@ -1114,6 +1105,38 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform .3s ease;
+    }
+
+    .gal-item .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .gal-item .gal-overlay span {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f2f2f2;
+    }
+
+    @media (hover: hover) {
+      .gal-item:hover img {
+        transform: scale(1.04);
+      }
+      .gal-item:has(img):hover .gal-overlay {
+        opacity: 1;
+      }
     }
 
     /* ===== ABOUT BIO ===== */
