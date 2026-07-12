@@ -1731,6 +1731,21 @@
       transform: translateY(0);
     }
 
+    /* Preserve gold shimmer gradient on CTA heading after word-split */
+    .cta-heading.hs-split .hs-word {
+      background: linear-gradient(90deg, #BF9049 30%, #f0c97a 50%, #BF9049 70%);
+      background-size: 400px 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW FRAME ===== */
     .ach-banner { position: relative; }
     .ach-banner-frame {
