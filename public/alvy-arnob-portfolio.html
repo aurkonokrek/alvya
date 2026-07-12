@@ -109,10 +109,12 @@
       position: absolute;
       bottom: -3px;
       left: 0;
-      width: 0;
+      width: 100%;
       height: 1px;
       background: var(--gold);
-      transition: width .3s;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .3s ease;
     }
 
     .nav-link:hover {
@@ -120,8 +122,9 @@
     }
 
     .nav-link:hover::after {
-      width: 100%;
+      transform: scaleX(1);
     }
+
 
     .nav-burger {
       display: none;
@@ -603,8 +606,8 @@
       align-items: baseline;
       gap: .1em;
       overflow: visible;
-      animation: heroUp 1s cubic-bezier(.22, .68, 0, 1.2) .2s both;
     }
+
 
     @keyframes heroUp {
       from {
@@ -1711,6 +1714,61 @@
       opacity: 1;
       transform: translateY(0) rotate(0deg);
     }
+
+    /* ===== HEADLINE SPLIT REVEAL ===== */
+    .hs-split .hs-word,
+    .hs-split .hs-char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
+      will-change: opacity, transform;
+    }
+    .hs-split .hs-word { white-space: pre; }
+    .hs-split.hs-in .hs-word,
+    .hs-split.hs-in .hs-char {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Preserve gold shimmer gradient on CTA heading after word-split */
+    .cta-heading.hs-split .hs-word {
+      background: linear-gradient(90deg, #BF9049 30%, #f0c97a 50%, #BF9049 70%);
+      background-size: 400px 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+
+
+
+    /* ===== ACHIEVEMENTS BANNER LINE-DRAW FRAME ===== */
+    .ach-banner { position: relative; }
+    .ach-banner-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .ach-banner-frame rect {
+      fill: none;
+      stroke: rgba(191, 144, 73, 0.5);
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    .ach-banner.frame-in .ach-banner-frame rect {
+      animation: achFrameDraw 1.4s ease forwards;
+    }
+    @keyframes achFrameDraw {
+      to { stroke-dashoffset: 0; }
+    }
+
 
     /* ===== GALLERY LIGHTBOX ===== */
     .lightbox-overlay {
@@ -3016,9 +3074,13 @@
         <p class="ach-lede">A collected record of certificates, medals and moments earned along the way — quiet milestones from a longer, still-unfolding practice.</p>
       </header>
 
-      <div class="ach-banner rev-up">
+      <div class="ach-banner rev-up" id="achBanner">
         <img src="/__l5e/assets-v1/28e43e44-7c3e-44cf-a2ce-fd7a42d95388/achievements-banner.jpg" alt="Collage of Alvy Arnob's certificates, medals and trophies" loading="lazy" />
+        <svg class="ach-banner-frame" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="99" height="99" pathLength="1000"></rect>
+        </svg>
       </div>
+
 
       <div class="ach-cta-row rev-up">
         <button type="button" class="ach-toggle" id="achToggle" aria-expanded="false" aria-controls="achList">
@@ -3443,7 +3505,7 @@
       if (!t) return;
       t.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
-      setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); }, 60);
+      setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); initHeadlineSplit(); initAchBannerFrame(); }, 60);
     }
     function toggleNav() {
       var nav = document.getElementById('navMob');
@@ -3519,6 +3581,92 @@
         obs.observe(el);
       });
     }
+
+    /* ===== HEADLINE SPLIT REVEAL ===== */
+    function _splitToWords(el, charLevel) {
+      if (el.dataset.hsDone) return;
+      el.dataset.hsDone = '1';
+      // Split existing child element structure (e.g. hero-name has two spans);
+      // walk direct children: text nodes get split into words; element children
+      // recurse into their text (each element itself acts as a word group).
+      const process = (node) => {
+        const kids = Array.from(node.childNodes);
+        let out = [];
+        kids.forEach(k => {
+          if (k.nodeType === 3) {
+            const text = k.textContent;
+            const parts = text.split(/(\s+)/);
+            parts.forEach(p => {
+              if (p === '') return;
+              if (/^\s+$/.test(p)) { out.push(document.createTextNode(p)); return; }
+              if (charLevel) {
+                Array.from(p).forEach(ch => {
+                  const s = document.createElement('span');
+                  s.className = 'hs-char';
+                  s.textContent = ch;
+                  out.push(s);
+                });
+              } else {
+                const s = document.createElement('span');
+                s.className = 'hs-word';
+                s.textContent = p;
+                out.push(s);
+              }
+            });
+          } else if (k.nodeType === 1) {
+            process(k);
+            out.push(k);
+          } else {
+            out.push(k);
+          }
+        });
+        node.innerHTML = '';
+        out.forEach(n => node.appendChild(n));
+      };
+      process(el);
+      // stagger delays
+      const items = el.querySelectorAll('.hs-word, .hs-char');
+      items.forEach((s, i) => { s.style.transitionDelay = (i * 0.04) + 's'; });
+      el.classList.add('hs-split');
+    }
+
+    function initHeadlineSplit() {
+      const scope = document.querySelector('.page.active') || document;
+      // Immediate (hero on Home)
+      scope.querySelectorAll('.hero-name').forEach(el => {
+        _splitToWords(el, true);
+        requestAnimationFrame(() => el.classList.add('hs-in'));
+      });
+      // Scroll-triggered headlines
+      const sels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label'];
+      sels.forEach(sel => {
+        scope.querySelectorAll(sel).forEach(el => {
+          _splitToWords(el, false);
+          const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+              if (e.isIntersecting) { el.classList.add('hs-in'); io.unobserve(el); }
+            });
+          }, { threshold: 0.35 });
+          io.observe(el);
+        });
+      });
+    }
+
+    /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
+    function initAchBannerFrame() {
+      const scope = document.querySelector('.page.active') || document;
+      scope.querySelectorAll('.ach-banner').forEach(el => {
+        if (el.dataset.frameDone) return;
+        el.dataset.frameDone = '1';
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { el.classList.add('frame-in'); io.unobserve(el); }
+          });
+        }, { threshold: 0.25 });
+        io.observe(el);
+      });
+    }
+
 
     /* ===== STAT COUNTERS ===== */
     function animCount(el) {
@@ -3751,7 +3899,7 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-      initReveal(); initSplitText(); initStats(); initTimelines(); startAuto(); wireGallery();
+      initReveal(); initSplitText(); initStats(); initTimelines(); startAuto(); wireGallery(); initHeadlineSplit(); initAchBannerFrame();
     });
   </script>
 
