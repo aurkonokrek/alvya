@@ -3548,6 +3548,13 @@
       const src = lbItems[lbCurrent];
       if (!src) { wrap.innerHTML = ''; return; }
       wrap.innerHTML = '<img src="' + src + '" alt="">';
+      const img = wrap.querySelector('img');
+      if (img) {
+        img.addEventListener('click', function (e) {
+          e.stopPropagation();
+          img.classList.toggle('zoomed');
+        });
+      }
     }
 
     // Close on overlay click
