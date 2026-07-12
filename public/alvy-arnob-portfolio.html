@@ -3515,10 +3515,9 @@
     let lbCurrent = 0;
     let lbPageKey = 'traditional';
 
-    function openLightbox(pageKey, index) {
-      lbPageKey = pageKey;
-      lbItems = galleryData[pageKey] || galleryData.traditional;
-      lbCurrent = index;
+    function openLightbox(imgs, index) {
+      lbItems = imgs || [];
+      lbCurrent = index >= 0 ? index : 0;
       renderLightbox();
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -3530,12 +3529,17 @@
     }
 
     function lbNav(dir) {
+      if (!lbItems.length) return;
       lbCurrent = (lbCurrent + dir + lbItems.length) % lbItems.length;
       renderLightbox();
     }
 
     function renderLightbox() {
-      // Traditional/Digital lightbox: image-only, no captions.
+      const wrap = document.getElementById('lbImgWrap');
+      if (!wrap) return;
+      const src = lbItems[lbCurrent];
+      if (!src) { wrap.innerHTML = ''; return; }
+      wrap.innerHTML = '<img src="' + src + '" alt="">';
     }
 
     // Close on overlay click
