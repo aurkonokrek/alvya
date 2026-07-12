@@ -985,6 +985,45 @@
       margin-bottom: 28px;
     }
 
+    /* Studio ALYX variant */
+    .studio-alyx-bg {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.72)),
+        url("/__l5e/assets-v1/254fc4f0-5527-4d9d-8d39-703950ac366f/studio-alyx.jpg") center/cover no-repeat;
+    }
+    .studio-alyx-label {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .studio-alyx-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: transparent;
+      border: none;
+      padding: 8px 4px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,.35);
+      transition: color .3s ease, border-color .3s ease, transform .3s ease;
+    }
+    .studio-alyx-cta:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      transform: translateY(2px);
+    }
+    .studio-alyx-cta svg { width: 12px; height: 12px; }
+
     /* ===== WORK PAGES ===== */
     .wp-header {
       padding: 60px 52px 20px;
@@ -2759,8 +2798,21 @@
         </svg></div>
     </div>
 
+    <!-- STUDIO ALYX BANNER -->
+    <div class="more-about rev-up">
+      <div class="more-about-bg studio-alyx-bg"></div>
+      <div class="more-about-inner">
+        <div class="studio-alyx-label">Studio ALYX</div>
+        <div class="more-about-body">Where the work actually happens — sketches, screens, and unfinished frames, late into the night. This is the space behind everything you see here.</div>
+        <a href="#experiences" class="studio-alyx-cta" onclick="event.preventDefault();document.getElementById('experiences').scrollIntoView({behavior:'smooth',block:'start'});">
+          See the Journey
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+        </a>
+      </div>
+    </div>
+
     <!-- EXPERIENCES -->
-    <div class="exp-wrap">
+    <div class="exp-wrap" id="experiences">
       <div class="exp-head rev-up">Experiences</div>
       <div class="tl-grid">
         <div class="tl-col">
