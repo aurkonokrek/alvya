@@ -2829,197 +2829,269 @@
       <div class="cv-row"><button class="btn-outline">View CV/Bio</button></div>
     </div>
 
-    <!-- ACHIEVEMENTS — editorial magazine grid -->
-    <section class="ed-ach-wrap" aria-labelledby="ed-ach-head">
-      <header class="ed-ach-intro rev-up">
-        <div class="ed-ach-kicker">Selected Recognition</div>
-        <h2 class="ed-ach-head" id="ed-ach-head">Achievements</h2>
-        <p class="ed-ach-lede">A short record of the moments my work has been recognised — quiet milestones from a longer, still-unfolding practice.</p>
+    <!-- ACHIEVEMENTS — banner + accordion -->
+    <section class="ach-wrap" aria-labelledby="ach-head">
+      <header class="ach-intro rev-up">
+        <div class="ach-kicker">Selected Recognition</div>
+        <h2 class="ach-head" id="ach-head">Achievements</h2>
+        <p class="ach-lede">A collected record of certificates, medals and moments earned along the way — quiet milestones from a longer, still-unfolding practice.</p>
       </header>
 
-      <div class="ed-ach-grid">
-        <!-- 1. Featured large -->
-        <article class="ed-ach-card ed-card-featured rev-up">
-          <div class="ed-ach-media"><svg width="80" height="80"><use href="#ph" /></svg></div>
-          <div class="ed-ach-text">
-            <div class="ed-ach-label">Award &middot; 2023</div>
-            <h3 class="ed-ach-title">Best Illustration of the Year</h3>
-            <p class="ed-ach-body">Recognised by the National Arts Council for outstanding character design and visual storytelling.</p>
-          </div>
-        </article>
+      <div class="ach-banner rev-up">
+        <img src="/__l5e/assets-v1/28e43e44-7c3e-44cf-a2ce-fd7a42d95388/achievements-banner.jpg" alt="Collage of Alvy Arnob's certificates, medals and trophies" loading="lazy" />
+      </div>
 
-        <!-- 2 -->
-        <article class="ed-ach-card ed-card-tall rev-up">
-          <div class="ed-ach-media"><svg width="60" height="60"><use href="#ph" /></svg></div>
-          <div class="ed-ach-text">
-            <div class="ed-ach-label">Featured &middot; 2022</div>
-            <h3 class="ed-ach-title">Dhaka Art Summit Feature</h3>
-            <p class="ed-ach-body">Selected work exhibited at Dhaka Art Summit, showcasing traditional and digital illustrations.</p>
-          </div>
-        </article>
+      <div class="ach-cta-row rev-up">
+        <button type="button" class="ach-toggle" id="achToggle" aria-expanded="false" aria-controls="achList">
+          <span class="ach-toggle-label">For Details</span>
+          <span class="ach-toggle-icon" aria-hidden="true">+</span>
+        </button>
+      </div>
 
-        <!-- 3 -->
-        <article class="ed-ach-card ed-card-wide rev-up">
-          <div class="ed-ach-media"><svg width="70" height="70"><use href="#ph" /></svg></div>
-          <div class="ed-ach-text">
-            <div class="ed-ach-label">Publication &middot; 2021</div>
-            <h3 class="ed-ach-title">Published Children's Book</h3>
-            <p class="ed-ach-body">Illustrated a nationally distributed children's book series, reaching thousands of young readers. Illustrations focused on vibrant colors and expressive characters to help teach early reading fundamentals.</p>
-          </div>
-        </article>
+      <div class="ach-list" id="achList" hidden>
+        <!-- Row template: duplicate <details class="ach-row"> to add more entries -->
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2023</span>
+              <span class="ach-row-title">Best Illustration of the Year</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Recognised by the National Arts Council for outstanding character design and visual storytelling.</div>
+        </details>
 
-        <!-- 4 -->
-        <article class="ed-ach-card ed-card-tall-r rev-up">
-          <div class="ed-ach-media"><svg width="70" height="70"><use href="#ph" /></svg></div>
-          <div class="ed-ach-text">
-            <div class="ed-ach-label">Finalist &middot; 2024</div>
-            <h3 class="ed-ach-title">Animation Short — Film Festival</h3>
-            <p class="ed-ach-body">Finalist at the South Asian Animation Festival for an original 2D animated short film. This project took over six months of dedicated frame-by-frame illustration, capturing the essence of local folklore and bringing it to the big screen.</p>
-          </div>
-        </article>
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2022</span>
+              <span class="ach-row-title">Dhaka Art Summit Feature</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Selected work exhibited at Dhaka Art Summit, showcasing traditional and digital illustrations.</div>
+        </details>
 
-        <!-- 5 -->
-        <article class="ed-ach-card ed-card-small rev-up">
-          <div class="ed-ach-media"><svg width="60" height="60"><use href="#ph" /></svg></div>
-          <div class="ed-ach-text">
-            <div class="ed-ach-label">Exhibition &middot; 2019</div>
-            <h3 class="ed-ach-title">National Art Gallery Showcase</h3>
-            <p class="ed-ach-body">Featured artist in the annual contemporary illustration exhibition. Showcased a series of traditional ink and oil paintings exploring maternal earth archetypes and natural environments.</p>
-          </div>
-        </article>
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2021</span>
+              <span class="ach-row-title">Published Children's Book</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Illustrated a nationally distributed children's book series, reaching thousands of young readers.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2024</span>
+              <span class="ach-row-title">Animation Short — Film Festival</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Finalist at the South Asian Animation Festival for an original 2D animated short film.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2019</span>
+              <span class="ach-row-title">National Art Gallery Showcase</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Featured artist in the annual contemporary illustration exhibition.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2020</span>
+              <span class="ach-row-title">Young Illustrator Merit Award</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Awarded for a portfolio of emerging illustration work across editorial and print media.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2021</span>
+              <span class="ach-row-title">Regional Poster Design Competition — Winner</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">First place in a regional design competition celebrating cultural heritage through poster art.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2022</span>
+              <span class="ach-row-title">Featured in International Illustration Annual</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Selected among featured artists in an international annual print showcasing contemporary illustration.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2023</span>
+              <span class="ach-row-title">Certificate of Excellence — Character Design</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Recognised for original character design work in a juried professional competition.</div>
+        </details>
+
+        <details class="ach-row">
+          <summary>
+            <div class="ach-row-main">
+              <span class="ach-row-year">2024</span>
+              <span class="ach-row-title">Guest Speaker — Visual Storytelling Panel</span>
+            </div>
+            <span class="ach-row-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="ach-row-body">Invited speaker at a national visual storytelling and animation panel discussion.</div>
+        </details>
       </div>
     </section>
 
     <style>
-      .ed-ach-wrap {
+      .ach-wrap {
         background: #0a0a0a;
         padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 80px) clamp(60px, 8vw, 100px);
       }
-      .ed-ach-intro {
-        max-width: 720px;
-        margin: 0 0 clamp(40px, 5vw, 72px);
-      }
-      .ed-ach-kicker {
+      .ach-intro { max-width: 760px; margin: 0 0 clamp(32px, 4vw, 56px); }
+      .ach-kicker {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        color: #BF9049;
-        margin-bottom: 18px;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.28em; text-transform: uppercase;
+        color: #BF9049; margin-bottom: 18px;
       }
-      .ed-ach-head,
-      h2.ed-ach-head {
+      .ach-head, h2.ach-head {
         font-family: 'DM Serif Display', Georgia, serif !important;
         font-size: clamp(26px, 3.5vw, 48px) !important;
-        line-height: 1.1;
-        letter-spacing: 0.05em;
+        line-height: 1.1; letter-spacing: 0.05em;
         text-transform: uppercase;
         color: #BF9049 !important;
-        margin: 0 0 22px;
-        font-weight: 400 !important;
+        margin: 0 0 22px; font-weight: 400 !important;
       }
-      .ed-ach-lede,
-      .ed-ach-lede * {
-        font-family: 'Nunito Sans', sans-serif !important;
-        font-size: 16px !important;
-        font-weight: 400 !important;
-        line-height: 1.7;
-        color: #e8e8e8 !important;
-        text-decoration: none !important;
-        max-width: 560px;
-        margin: 0;
+      .ach-lede {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 16px; line-height: 1.7;
+        color: #e8e8e8; max-width: 620px; margin: 0;
       }
-      .ed-ach-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: clamp(20px, 2.5vw, 36px);
-      }
-      .ed-ach-card {
-        display: flex;
-        flex-direction: column;
-        transition: transform 300ms ease;
-      }
-      .ed-ach-card:hover { transform: translateY(-4px); }
-      .ed-ach-media {
-        background: linear-gradient(180deg, #1a1a1a 0%, #101010 100%);
-        border: 1px solid rgba(191, 144, 73, 0.12);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .ach-banner {
         width: 100%;
-        transition: border-color 300ms ease;
+        border: 1px solid rgba(191, 144, 73, 0.18);
+        overflow: hidden;
+        background: #101010;
+        margin-bottom: clamp(28px, 3.5vw, 44px);
       }
-      .ed-ach-card:hover .ed-ach-media { border-color: rgba(191, 144, 73, 0.28); }
-      .ed-ach-media svg { opacity: 0.22; }
-      .ed-ach-text { padding: 22px 4px 0; }
-      .ed-ach-label {
+      .ach-banner img {
+        display: block; width: 100%; height: auto;
+        aspect-ratio: 16 / 9; object-fit: cover;
+      }
+      .ach-cta-row {
+        display: flex; justify-content: center;
+        margin-bottom: clamp(24px, 3vw, 40px);
+      }
+      .ach-toggle {
+        display: inline-flex; align-items: center; gap: 14px;
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 10.5px;
-        font-weight: 700;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        color: #BF9049;
-        margin-bottom: 12px;
-        position: relative;
-        padding-left: 26px;
+        font-size: 12px; font-weight: 700;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: #fff; background: transparent;
+        border: 1px solid rgba(255,255,255,0.6);
+        padding: 14px 28px; cursor: pointer;
+        transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
       }
-      .ed-ach-label::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 18px;
-        height: 1px;
-        background: #BF9049;
+      .ach-toggle:hover { background: #fff; color: #000; border-color: #fff; }
+      .ach-toggle-icon {
+        display: inline-block; font-size: 16px; line-height: 1;
+        transition: transform 250ms ease;
       }
-      .ed-ach-title {
+      .ach-toggle[aria-expanded="true"] .ach-toggle-icon { transform: rotate(45deg); }
+      .ach-list {
+        max-width: 900px; margin: 0 auto;
+        border-top: 1px solid rgba(191, 144, 73, 0.18);
+      }
+      .ach-list[hidden] { display: none; }
+      .ach-row {
+        border-bottom: 1px solid rgba(191, 144, 73, 0.18);
+      }
+      .ach-row > summary {
+        list-style: none;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 20px; padding: 22px 8px; cursor: pointer;
+        transition: background 200ms ease;
+      }
+      .ach-row > summary::-webkit-details-marker { display: none; }
+      .ach-row > summary:hover { background: rgba(191, 144, 73, 0.04); }
+      .ach-row-main {
+        display: flex; align-items: baseline; gap: 20px; flex: 1; min-width: 0;
+      }
+      .ach-row-year {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.24em; color: #BF9049;
+        flex: 0 0 auto; min-width: 52px;
+      }
+      .ach-row-title {
         font-family: 'DM Serif Display', Georgia, serif;
-        font-size: clamp(20px, 1.9vw, 30px);
-        line-height: 1.2;
-        color: #fff;
-        margin: 0 0 12px;
-        font-weight: 400;
+        font-size: clamp(17px, 1.6vw, 22px);
+        color: #f5f5f5; font-weight: 400; line-height: 1.3;
       }
-      .ed-ach-body {
+      .ach-row-icon {
+        position: relative; width: 14px; height: 14px; flex: 0 0 auto;
+      }
+      .ach-row-icon::before, .ach-row-icon::after {
+        content: ""; position: absolute; background: #BF9049;
+        top: 50%; left: 50%; transform: translate(-50%, -50%);
+        transition: transform 250ms ease, opacity 250ms ease;
+      }
+      .ach-row-icon::before { width: 14px; height: 1.5px; }
+      .ach-row-icon::after { width: 1.5px; height: 14px; }
+      .ach-row[open] .ach-row-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+      .ach-row-body {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: clamp(13.5px, 1vw, 15px);
-        line-height: 1.7;
-        color: rgba(255, 255, 255, 0.68);
-        margin: 0;
+        font-size: 15px; line-height: 1.7; color: #cfcfcf;
+        padding: 0 8px 22px; max-width: 720px;
       }
-
-      /* Asymmetric magazine placements */
-      .ed-card-featured { grid-column: span 7; }
-      .ed-card-featured .ed-ach-media { aspect-ratio: 4 / 3; }
-      .ed-card-featured .ed-ach-title { font-size: clamp(26px, 2.6vw, 40px); }
-
-      .ed-card-tall { grid-column: span 5; }
-      .ed-card-tall .ed-ach-media { aspect-ratio: 4 / 5; }
-
-      .ed-card-wide { grid-column: span 8; }
-      .ed-card-wide .ed-ach-media { aspect-ratio: 16 / 9; }
-
-      .ed-card-tall-r { grid-column: span 7; }
-      .ed-card-tall-r .ed-ach-media { aspect-ratio: 3 / 2; }
-
-      .ed-card-small { grid-column: span 5; }
-      .ed-card-small .ed-ach-media { aspect-ratio: 4 / 5; }
-
-      @media (max-width: 900px) {
-        .ed-ach-grid { grid-template-columns: repeat(6, 1fr); gap: 28px; }
-        .ed-card-featured,
-        .ed-card-tall,
-        .ed-card-wide,
-        .ed-card-tall-r,
-        .ed-card-small { grid-column: span 6; }
-        .ed-card-featured .ed-ach-media,
-        .ed-card-wide .ed-ach-media,
-        .ed-card-tall-r .ed-ach-media { aspect-ratio: 16 / 10; }
-        .ed-card-tall .ed-ach-media,
-        .ed-card-small .ed-ach-media { aspect-ratio: 4 / 3; }
+      @media (max-width: 640px) {
+        .ach-row > summary { padding: 18px 4px; gap: 14px; }
+        .ach-row-main { gap: 14px; flex-direction: column; align-items: flex-start; }
+        .ach-row-year { min-width: 0; }
+        .ach-row-body { padding: 0 4px 18px; font-size: 14px; }
+        .ach-toggle { padding: 12px 22px; font-size: 11px; }
       }
     </style>
+
+    <script>
+      (function(){
+        var btn = document.getElementById('achToggle');
+        var list = document.getElementById('achList');
+        if (!btn || !list) return;
+        btn.addEventListener('click', function(){
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          if (open) {
+            btn.setAttribute('aria-expanded', 'false');
+            list.setAttribute('hidden', '');
+            btn.querySelector('.ach-toggle-label').textContent = 'For Details';
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            list.removeAttribute('hidden');
+            btn.querySelector('.ach-toggle-label').textContent = 'Hide Details';
+          }
+        });
+      })();
+    </script>
 
     <!-- CTA -->
     <div class="cta-section rev-up">
