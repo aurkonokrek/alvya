@@ -451,11 +451,16 @@
 
     .footer-name {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: .05em;
+      font-size: clamp(64px, 14vw, 220px);
+      line-height: 1;
+      letter-spacing: .04em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 40px;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(60px) scale(.96);
+      transition: opacity .3s ease, transform .3s ease;
+      will-change: opacity, transform;
     }
 
     .footer-name span {
@@ -464,37 +469,45 @@
 
     .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      gap: 0;
     }
 
     .footer-link {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: 'Roboto', sans-serif;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 4px;
+      font-family: 'Nunito Sans', 'Roboto', sans-serif;
       font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
       cursor: pointer;
-      transition: color .2s;
+      border-bottom: 1px solid rgba(191,144,73,0.25);
+      transition: color .3s ease;
     }
+    .footer-link:first-child { border-top: 1px solid rgba(191,144,73,0.25); }
 
-    .footer-link:hover {
+    .footer-link .fl-arrow {
+      display: inline-block;
+      transition: transform .3s ease, color .3s ease;
       color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
     }
 
-    .footer-link svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
+    .footer-link:hover { color: var(--gold); }
+    .footer-link:hover .fl-arrow { transform: translateX(8px); }
 
     .footer-divider {
       height: 1px;
-      background: var(--white);
+      background: rgba(191,144,73,0.3);
       margin-top: 8px;
     }
 
