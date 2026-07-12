@@ -109,10 +109,12 @@
       position: absolute;
       bottom: -3px;
       left: 0;
-      width: 0;
+      width: 100%;
       height: 1px;
       background: var(--gold);
-      transition: width .3s;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .3s ease;
     }
 
     .nav-link:hover {
@@ -120,8 +122,9 @@
     }
 
     .nav-link:hover::after {
-      width: 100%;
+      transform: scaleX(1);
     }
+
 
     .nav-burger {
       display: none;
