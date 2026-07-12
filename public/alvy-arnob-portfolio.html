@@ -1952,27 +1952,20 @@
       position: relative;
     }
 
-    .gal-item::after {
-      content: '🔍';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      font-size: 28px;
-      background: rgba(0, 0, 0, .55);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .3s;
-      pointer-events: none;
-      z-index: 4;
+    .lightbox-img-wrap img.zoomed {
+      max-width: none;
+      max-height: none;
+      width: auto;
+      height: auto;
+      cursor: zoom-out;
     }
 
-    .gal-item:hover::after {
-      transform: translate(-50%, -50%) scale(1);
+    .lightbox-img-wrap {
+      overflow: auto;
+    }
+
+    .lightbox-img-wrap img {
+      cursor: zoom-in;
     }
 
     .lightbox-overlay {
