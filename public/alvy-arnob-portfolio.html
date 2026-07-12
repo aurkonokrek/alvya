@@ -2848,7 +2848,8 @@
         </button>
       </div>
 
-      <div class="ach-list" id="achList" hidden>
+      <div class="ach-scroll" id="achList" hidden>
+      <div class="ach-list">
         <!-- Row template: duplicate <details class="ach-row"> to add more entries -->
         <details class="ach-row">
           <summary>
@@ -2960,6 +2961,7 @@
           <div class="ach-row-body">Invited speaker at a national visual storytelling and animation panel discussion.</div>
         </details>
       </div>
+      </div>
     </section>
 
     <style>
@@ -3018,57 +3020,72 @@
         transition: transform 250ms ease;
       }
       .ach-toggle[aria-expanded="true"] .ach-toggle-icon { transform: rotate(45deg); }
-      .ach-list {
+      .ach-scroll {
         max-width: 900px; margin: 0 auto;
+        position: relative;
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(191, 144, 73, 0.5) rgba(255,255,255,0.04);
+        -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 24px), transparent 100%);
+                mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 24px), transparent 100%);
+      }
+      .ach-scroll[hidden] { display: none; }
+      .ach-scroll::-webkit-scrollbar { width: 6px; }
+      .ach-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+      .ach-scroll::-webkit-scrollbar-thumb { background: rgba(191, 144, 73, 0.5); border-radius: 3px; }
+      .ach-scroll::-webkit-scrollbar-thumb:hover { background: rgba(191, 144, 73, 0.75); }
+      .ach-list {
         border-top: 1px solid rgba(191, 144, 73, 0.18);
       }
-      .ach-list[hidden] { display: none; }
       .ach-row {
         border-bottom: 1px solid rgba(191, 144, 73, 0.18);
       }
       .ach-row > summary {
         list-style: none;
         display: flex; align-items: center; justify-content: space-between;
-        gap: 20px; padding: 22px 8px; cursor: pointer;
+        gap: 16px; padding: 14px 8px; cursor: pointer;
         transition: background 200ms ease;
       }
       .ach-row > summary::-webkit-details-marker { display: none; }
       .ach-row > summary:hover { background: rgba(191, 144, 73, 0.04); }
       .ach-row-main {
-        display: flex; align-items: baseline; gap: 20px; flex: 1; min-width: 0;
+        display: flex; align-items: baseline; gap: 14px; flex: 1; min-width: 0;
       }
       .ach-row-year {
         font-family: 'Nunito Sans', sans-serif;
         font-size: 11px; font-weight: 700;
         letter-spacing: 0.24em; color: #BF9049;
-        flex: 0 0 auto; min-width: 52px;
+        flex: 0 0 auto; min-width: 48px;
       }
       .ach-row-title {
         font-family: 'DM Serif Display', Georgia, serif;
-        font-size: clamp(17px, 1.6vw, 22px);
+        font-size: clamp(15px, 1.4vw, 20px);
         color: #f5f5f5; font-weight: 400; line-height: 1.3;
       }
       .ach-row-icon {
-        position: relative; width: 14px; height: 14px; flex: 0 0 auto;
+        position: relative; width: 12px; height: 12px; flex: 0 0 auto;
       }
       .ach-row-icon::before, .ach-row-icon::after {
         content: ""; position: absolute; background: #BF9049;
         top: 50%; left: 50%; transform: translate(-50%, -50%);
         transition: transform 250ms ease, opacity 250ms ease;
       }
-      .ach-row-icon::before { width: 14px; height: 1.5px; }
-      .ach-row-icon::after { width: 1.5px; height: 14px; }
+      .ach-row-icon::before { width: 12px; height: 1.5px; }
+      .ach-row-icon::after { width: 1.5px; height: 12px; }
       .ach-row[open] .ach-row-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
       .ach-row-body {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 15px; line-height: 1.7; color: #cfcfcf;
-        padding: 0 8px 22px; max-width: 720px;
+        font-size: 14px; line-height: 1.65; color: #cfcfcf;
+        padding: 0 8px 16px; max-width: 720px;
       }
       @media (max-width: 640px) {
-        .ach-row > summary { padding: 18px 4px; gap: 14px; }
-        .ach-row-main { gap: 14px; flex-direction: column; align-items: flex-start; }
+        .ach-scroll { max-height: 480px; }
+        .ach-row > summary { padding: 12px 4px; gap: 12px; }
+        .ach-row-main { gap: 10px; flex-direction: column; align-items: flex-start; }
         .ach-row-year { min-width: 0; }
-        .ach-row-body { padding: 0 4px 18px; font-size: 14px; }
+        .ach-row-body { padding: 0 4px 14px; font-size: 13.5px; }
         .ach-toggle { padding: 12px 22px; font-size: 11px; }
       }
     </style>
