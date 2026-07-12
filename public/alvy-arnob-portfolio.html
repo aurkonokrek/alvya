@@ -873,6 +873,40 @@
       opacity: .35;
     }
 
+    /* Video teaser variant — widescreen 16:9 + play overlay */
+    .carousel-wrap.is-video .carousel-slide { aspect-ratio: 16 / 9; }
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid #BF9049;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .3s ease, background .3s ease, border-color .3s ease, filter .3s ease;
+    }
+    .video-play-btn svg { display: block; }
+    .carousel-wrap.is-video.is-link:hover .video-play-btn {
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.6);
+      filter: brightness(1.15);
+    }
+    @media (max-width: 768px) {
+      .carousel-wrap.is-video .carousel-slide { aspect-ratio: 16 / 9; }
+      .video-play-btn { width: 60px; height: 60px; }
+    }
+
+
     .c-arrows {
       position: absolute;
       top: 50%;
