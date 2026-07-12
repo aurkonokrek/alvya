@@ -3597,13 +3597,54 @@
 
     /* ===== AUTO CAROUSELS ===== */
     function startAuto() {
-      ['c-feat', 'c-dig', 'c-trad'].forEach((id, offset) => {
+      ['c-dig', 'c-trad'].forEach((id, offset) => {
         setInterval(() => {
           if (document.getElementById('page-home').classList.contains('active')) cMove(id, 1);
         }, 3400 + offset * 300);
       });
+      startFeatBanner();
       /* achievements auto-carousel removed — grid is now static */
     }
+
+    /* ===== FEATURED WORK VIDEO BANNER ===== */
+    let feBCur = 0, feBTimer = null, feBPaused = false;
+    function feBUpdate() {
+      const slides = document.querySelectorAll('#feat-banner .feat-slide');
+      const dots = document.querySelectorAll('#feat-banner-d .c-dot');
+      slides.forEach((s, i) => {
+        const active = i === feBCur;
+        s.classList.toggle('act', active);
+        const v = s.querySelector('video');
+        if (!v) return;
+        if (active) { try { v.currentTime = 0; v.play().catch(()=>{}); } catch(e){} }
+        else { try { v.pause(); } catch(e){} }
+      });
+      dots.forEach((d, i) => d.classList.toggle('act', i === feBCur));
+    }
+    function feBNext() {
+      const slides = document.querySelectorAll('#feat-banner .feat-slide');
+      if (!slides.length) return;
+      feBCur = (feBCur + 1) % slides.length;
+      feBUpdate();
+    }
+    function feBGo(e, i) {
+      if (e) e.stopPropagation();
+      feBCur = i;
+      feBUpdate();
+    }
+    function startFeatBanner() {
+      const banner = document.getElementById('feat-banner');
+      if (!banner) return;
+      banner.addEventListener('mouseenter', () => { feBPaused = true; });
+      banner.addEventListener('mouseleave', () => { feBPaused = false; });
+      feBUpdate();
+      feBTimer = setInterval(() => {
+        if (feBPaused) return;
+        if (!document.getElementById('page-home').classList.contains('active')) return;
+        feBNext();
+      }, 5000);
+    }
+
 
 
     // Wire up gallery items — detects which work page is active
