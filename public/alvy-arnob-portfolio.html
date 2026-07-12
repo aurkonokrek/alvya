@@ -3469,8 +3469,13 @@
       let pageKey = 'traditional';
       if (page.id === 'page-digital') pageKey = 'digital';
       else if (page.id === 'page-featured') pageKey = 'featured';
-      page.querySelectorAll('.gal-item').forEach((el, i) => {
-        el.onclick = () => openLightbox(pageKey, i);
+      const imgs = Array.from(page.querySelectorAll('.gal-item img')).map(i => i.src);
+      page.querySelectorAll('.gal-item').forEach((el) => {
+        const img = el.querySelector('img');
+        el.onclick = () => {
+          if (!img) return; // placeholder slot — no lightbox
+          openLightbox(imgs, imgs.indexOf(img.src));
+        };
       });
     }
 
