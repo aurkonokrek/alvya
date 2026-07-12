@@ -1325,20 +1325,29 @@
       padding: 30px 53px 60px;
     }
 
+    .exp-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
     .exp-head {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(26px, 3.5vw, 48px);
       letter-spacing: .05em;
       text-transform: uppercase;
       color: var(--gold);
-      text-align: center;
-      margin-bottom: 56px;
+      text-align: left;
+      margin-bottom: 0;
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
     }
 
     .tl-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr;
+      gap: 0;
     }
 
     .tl-col {
@@ -2078,6 +2087,16 @@
 
       .exp-wrap {
         padding: 20px 20px;
+      }
+
+      .exp-layout {
+        display: block;
+      }
+
+      .exp-head {
+        position: static;
+        text-align: center;
+        margin-bottom: 40px;
       }
 
       .tl-grid {
@@ -2954,9 +2973,10 @@
 
     <!-- EXPERIENCES -->
     <div class="exp-wrap" id="experiences">
+     <div class="exp-layout">
       <div class="exp-head rev-up">Experiences</div>
       <div class="tl-grid">
-        <div class="tl-col">
+       <div class="tl-col">
           <div class="tl-item">
             <div class="tl-icon-col">
               <div class="tl-icon"><img
@@ -3008,8 +3028,6 @@
               <div class="tl-role">2D Animator</div>
             </div>
           </div>
-        </div>
-        <div class="tl-col">
           <div class="tl-item">
             <div class="tl-icon-col">
               <div class="tl-icon"><img
@@ -3063,6 +3081,7 @@
           </div>
         </div>
       </div>
+     </div>
       <div class="cv-row"><button class="btn-outline">View CV/Bio</button></div>
     </div>
 
