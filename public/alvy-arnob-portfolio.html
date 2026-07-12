@@ -1325,20 +1325,29 @@
       padding: 30px 53px 60px;
     }
 
+    .exp-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
     .exp-head {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(26px, 3.5vw, 48px);
       letter-spacing: .05em;
       text-transform: uppercase;
       color: var(--gold);
-      text-align: center;
-      margin-bottom: 56px;
+      text-align: left;
+      margin-bottom: 0;
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
     }
 
     .tl-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr;
+      gap: 0;
     }
 
     .tl-col {
