@@ -1715,6 +1715,48 @@
       transform: translateY(0) rotate(0deg);
     }
 
+    /* ===== HEADLINE SPLIT REVEAL ===== */
+    .hs-split .hs-word,
+    .hs-split .hs-char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
+      will-change: opacity, transform;
+    }
+    .hs-split .hs-word { white-space: pre; }
+    .hs-split.hs-in .hs-word,
+    .hs-split.hs-in .hs-char {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== ACHIEVEMENTS BANNER LINE-DRAW FRAME ===== */
+    .ach-banner { position: relative; }
+    .ach-banner-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .ach-banner-frame rect {
+      fill: none;
+      stroke: rgba(191, 144, 73, 0.5);
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    .ach-banner.frame-in .ach-banner-frame rect {
+      animation: achFrameDraw 1.4s ease forwards;
+    }
+    @keyframes achFrameDraw {
+      to { stroke-dashoffset: 0; }
+    }
+
+
     /* ===== GALLERY LIGHTBOX ===== */
     .lightbox-overlay {
       position: fixed;
