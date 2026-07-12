@@ -1075,17 +1075,15 @@
       margin-bottom: 12px;
     }
 
-    .gal-3 .gal-item {
-      height: clamp(180px, 28vw, 480px);
+    .gal-3 .gal-item,
+    .gal-1 .gal-item {
+      aspect-ratio: 4 / 5;
+      height: auto;
+      width: 100%;
     }
 
     .gal-1 {
       margin-bottom: 12px;
-    }
-
-    .gal-1 .gal-item {
-      height: clamp(180px, 26vw, 460px);
-      width: 100%;
     }
 
     .gal-item {
@@ -1095,14 +1093,7 @@
       justify-content: center;
       overflow: hidden;
       cursor: pointer;
-      transition: transform .35s cubic-bezier(.22, .68, 0, 1.2), box-shadow .35s;
       position: relative;
-    }
-
-    .gal-item:hover {
-      transform: scale(1.025);
-      box-shadow: 0 12px 40px rgba(191, 144, 73, .15);
-      z-index: 2;
     }
 
     .gal-item svg {
@@ -1114,6 +1105,38 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform .3s ease;
+    }
+
+    .gal-item .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .gal-item .gal-overlay span {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f2f2f2;
+    }
+
+    @media (hover: hover) {
+      .gal-item:hover img {
+        transform: scale(1.04);
+      }
+      .gal-item:has(img):hover .gal-overlay {
+        opacity: 1;
+      }
     }
 
     /* ===== ABOUT BIO ===== */
@@ -1839,7 +1862,8 @@
 
       .gal-3 .gal-item,
       .gal-1 .gal-item {
-        height: 200px;
+        aspect-ratio: 4 / 5;
+        height: auto;
       }
 
       .wp-header {
@@ -1917,7 +1941,8 @@
       }
 
       .gal-3 .gal-item {
-        height: 220px;
+        aspect-ratio: 4 / 5;
+        height: auto;
       }
     }
 
@@ -1927,27 +1952,20 @@
       position: relative;
     }
 
-    .gal-item::after {
-      content: '🔍';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      font-size: 28px;
-      background: rgba(0, 0, 0, .55);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .3s;
-      pointer-events: none;
-      z-index: 4;
+    .lightbox-img-wrap img.zoomed {
+      max-width: none;
+      max-height: none;
+      width: auto;
+      height: auto;
+      cursor: zoom-out;
     }
 
-    .gal-item:hover::after {
-      transform: translate(-50%, -50%) scale(1);
+    .lightbox-img-wrap {
+      overflow: auto;
+    }
+
+    .lightbox-img-wrap img {
+      cursor: zoom-in;
     }
 
     .lightbox-overlay {
@@ -2622,18 +2640,13 @@
       texture, and storytelling through every digital artwork.</p>
     <div class="gal-wrap">
       <div class="gal-3">
-        <div class="gal-item rev-up"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
+        <div class="gal-item rev-up"><img src="/__l5e/assets-v1/c64d7164-b8b6-4147-9e23-0a57ac37e52f/digital-comic-panel.jpg" alt="Digital comic panel illustration in purple and magenta tones"><div class="gal-overlay"><span>View Artwork</span></div></div>
         <div class="gal-item rev-up" style="transition-delay:.1s"><svg width="80" height="80">
             <use href="#ph" />
           </svg></div>
         <div class="gal-item rev-up" style="transition-delay:.2s"><svg width="80" height="80">
             <use href="#ph" />
           </svg></div>
-      </div>
-      <div class="gal-1">
-        <div class="gal-item rev-up"><img src="/__l5e/assets-v1/c64d7164-b8b6-4147-9e23-0a57ac37e52f/digital-comic-panel.jpg" alt="Digital comic panel illustration in purple and magenta tones"></div>
       </div>
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -2688,18 +2701,13 @@
       lifelong journey.</p>
     <div class="gal-wrap">
       <div class="gal-3">
-        <div class="gal-item rev-up"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
+        <div class="gal-item rev-up"><img src="/__l5e/assets-v1/647703b1-f327-4938-bd7f-ec3ac9f77942/traditional-mandala.jpg" alt="Traditional black-and-white ink mandala drawing"><div class="gal-overlay"><span>View Artwork</span></div></div>
         <div class="gal-item rev-up" style="transition-delay:.1s"><svg width="80" height="80">
             <use href="#ph" />
           </svg></div>
         <div class="gal-item rev-up" style="transition-delay:.2s"><svg width="80" height="80">
             <use href="#ph" />
           </svg></div>
-      </div>
-      <div class="gal-1">
-        <div class="gal-item rev-up"><img src="/__l5e/assets-v1/647703b1-f327-4938-bd7f-ec3ac9f77942/traditional-mandala.jpg" alt="Traditional black-and-white ink mandala drawing"></div>
       </div>
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -3540,6 +3548,13 @@
       const src = lbItems[lbCurrent];
       if (!src) { wrap.innerHTML = ''; return; }
       wrap.innerHTML = '<img src="' + src + '" alt="">';
+      const img = wrap.querySelector('img');
+      if (img) {
+        img.addEventListener('click', function (e) {
+          e.stopPropagation();
+          img.classList.toggle('zoomed');
+        });
+      }
     }
 
     // Close on overlay click
