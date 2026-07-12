@@ -3184,14 +3184,15 @@
         margin-bottom: clamp(24px, 3vw, 40px);
       }
       .ach-toggle {
-        display: inline-flex; align-items: center; gap: 14px;
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 12px; font-weight: 700;
-        letter-spacing: 0.22em; text-transform: uppercase;
+        font-size: 16px; font-weight: 400;
+        letter-spacing: normal; text-transform: capitalize;
         color: #fff; background: transparent;
-        border: 1px solid rgba(255,255,255,0.6);
-        padding: 14px 28px; cursor: pointer;
-        transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+        border: 1px solid #fff;
+        border-radius: 500px;
+        padding: 9px 23px; cursor: pointer;
+        transition: background 250ms ease, color 250ms ease, border-color 250ms ease;
       }
       .ach-toggle:hover { background: #fff; color: #000; border-color: #fff; }
       .ach-toggle-icon {
@@ -3265,7 +3266,7 @@
         .ach-row-main { gap: 10px; flex-direction: column; align-items: flex-start; }
         .ach-row-year { min-width: 0; }
         .ach-row-body { padding: 0 4px 14px; font-size: 13.5px; }
-        .ach-toggle { padding: 12px 22px; font-size: 11px; }
+        .ach-toggle { padding: 9px 23px; font-size: 16px; }
       }
 
       /* ===== Featured Work rich items ===== */
