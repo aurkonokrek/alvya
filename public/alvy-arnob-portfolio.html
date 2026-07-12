@@ -2234,9 +2234,9 @@
         <a class="nav-link" onclick="toggleWorks(event)">Works</a>
 
         <div class="work-dropdown">
-          <a class="nav-link" onclick="goPage('traditional')">Traditional Work</a>
+          <a class="nav-link" onclick="goPage('featured')">Featured Work</a>
           <a class="nav-link" onclick="goPage('digital')">Digital Work</a>
-          <a class="nav-link" onclick="goPage('animation')">Animation Work</a>
+          <a class="nav-link" onclick="goPage('traditional')">Traditional Work</a>
         </div>
       </div>
       <a class="nav-link" onclick="goPage('about')">About Me</a>
@@ -2250,9 +2250,9 @@
         <span>Works</span><span class="chev" aria-hidden="true">▾</span>
       </button>
       <div class="nav-mobile-sub">
-        <a class="nav-link" onclick="goPage('traditional');toggleNav()">Traditional Work</a>
+        <a class="nav-link" onclick="goPage('featured');toggleNav()">Featured Work</a>
         <a class="nav-link" onclick="goPage('digital');toggleNav()">Digital Work</a>
-        <a class="nav-link" onclick="goPage('animation');toggleNav()">Animation Work</a>
+        <a class="nav-link" onclick="goPage('traditional');toggleNav()">Traditional Work</a>
       </div>
     </div>
     <a class="nav-link" onclick="goPage('about');toggleNav()">About Me</a>
@@ -2317,25 +2317,25 @@
       </div>
     </div>
 
-    <!-- TRADITIONAL WORK -->
+    <!-- FEATURED WORK -->
     <div class="hw-section">
       <div class="hw-text rev-l">
-        <div class="hw-title spt">Traditional Work</div>
-        <div class="hw-body">I have been drawing since childhood and my love for art has only grown with time.
-          Traditional work has always been my foundation, giving me the freedom to explore creativity in many ways.
+        <div class="hw-title spt">Featured Work</div>
+        <div class="hw-body">A curated selection of my strongest work across mediums — highlights spanning traditional illustration,
+          digital art, and animation, gathered in one place.
         </div>
-        <button class="btn-outline" onclick="goPage('traditional')">View More</button>
+        <button class="btn-outline" onclick="goPage('featured')">View More</button>
       </div>
-      <div class="carousel-wrap rev-r is-link" id="c-trad" role="link" tabindex="0" onclick="hwGo(event,'traditional')" onkeydown="if(event.key==='Enter')goPage('traditional')" aria-label="Open Traditional Work">
+      <div class="carousel-wrap rev-r is-link" id="c-feat" role="link" tabindex="0" onclick="hwGo(event,'featured')" onkeydown="if(event.key==='Enter')goPage('featured')" aria-label="Open Featured Work">
         <div class="c-arrows">
-          <button class="c-arrow" onclick="cMove('c-trad',-1)">
+          <button class="c-arrow" onclick="cMove('c-feat',-1)">
             <div
               style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
               <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
                 style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
           </button>
-          <button class="c-arrow" onclick="cMove('c-trad',1)">
+          <button class="c-arrow" onclick="cMove('c-feat',1)">
             <div
               style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
               <img
@@ -2343,7 +2343,7 @@
                 style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
           </button>
         </div>
-        <div class="carousel-track" id="c-trad-t">
+        <div class="carousel-track" id="c-feat-t">
           <div class="carousel-slide"><svg width="80" height="80">
               <use href="#ph" />
             </svg></div>
@@ -2354,10 +2354,10 @@
               <use href="#ph" />
             </svg></div>
         </div>
-        <div class="c-dots" id="c-trad-d">
-          <div class="c-dot act" onclick="cGo('c-trad',0)"></div>
-          <div class="c-dot" onclick="cGo('c-trad',1)"></div>
-          <div class="c-dot" onclick="cGo('c-trad',2)"></div>
+        <div class="c-dots" id="c-feat-d">
+          <div class="c-dot act" onclick="cGo('c-feat',0)"></div>
+          <div class="c-dot" onclick="cGo('c-feat',1)"></div>
+          <div class="c-dot" onclick="cGo('c-feat',2)"></div>
         </div>
       </div>
     </div>
@@ -2406,24 +2406,25 @@
       </div>
     </div>
 
-    <!-- ANIMATION WORK -->
+    <!-- TRADITIONAL WORK -->
     <div class="hw-section">
       <div class="hw-text rev-l">
-        <div class="hw-title spt">Animation Work</div>
-        <div class="hw-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-          pellentesque sem placerat.</div>
-        <button class="btn-outline" onclick="goPage('animation')">View More</button>
+        <div class="hw-title spt">Traditional Work</div>
+        <div class="hw-body">I have been drawing since childhood and my love for art has only grown with time.
+          Traditional work has always been my foundation, giving me the freedom to explore creativity in many ways.
+        </div>
+        <button class="btn-outline" onclick="goPage('traditional')">View More</button>
       </div>
-      <div class="carousel-wrap rev-r is-link" id="c-anim" role="link" tabindex="0" onclick="hwGo(event,'animation')" onkeydown="if(event.key==='Enter')goPage('animation')" aria-label="Open Animation Work">
+      <div class="carousel-wrap rev-r is-link" id="c-trad" role="link" tabindex="0" onclick="hwGo(event,'traditional')" onkeydown="if(event.key==='Enter')goPage('traditional')" aria-label="Open Traditional Work">
         <div class="c-arrows">
-          <button class="c-arrow" onclick="cMove('c-anim',-1)">
+          <button class="c-arrow" onclick="cMove('c-trad',-1)">
             <div
               style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
               <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAaCAYAAADL5WCkAAAEyUlEQVR4AexZTXLTSBR+3XFIsvMNRj7BOOtZTDRTUwVZDScgB6AK+wRJTiBSxR44QVhhilAls2ANnMDhBGSXIgQ33/ckS4p+bJX/ZKpQ9ZP6572n933qbnVLVmYcF8H9g/Ds8Dh8+iCEjCAulq+4si54G/zXneFmo5uXhbGSTL0BCGwZE4pzJ2DjAOJBJqmNDOt626b1kcTSBnW/TGK8jHtZGAtkhsFBGzcI9AYiJOtq7ORMnDwEqR2/NzAU5iG+c+6liFwKdGlDW/pAeWMT42OcjBdBLg3jHTLD4L4nZi/EDXqQK5B1Ku66829/0PP7g1d+/w1JQ5MI85DhP/03RyC3o7raIj36YMCygcdyMYKvDMaETAVvzDnaOP9dgpx9kHXi94dXqJuZqAubDhRJeHcTCV0+RnOuPgGaKSET4I9R0YWQSB/kkBQU6ye1cc6HBW27sU8UNySZvZViVDIv8MYG3B5E0LvmIlJtccoQyh7dw7DinISWZtM6MCqZLWOOFapzp0qGFuY/0cfYuTP1MPGtheZO68Bow+CwC4jsPZcggUsgFIsJPczDG5DrzFGxtVhjZfcpatk7D2BL/yg2k+pizEY3wYrYvWx9Np/HaMfijiIFN4yuxbM65HpTpNKx5A6//4pLKi6bZCzSKJl1MEr54QlwK/6S9jxGa438qXpOFLjmMyd1BIeo8iD6csK1VnIi+oCsMX9Lg4edgbE0tPRF6gnwKw8lilmMnDM5zOXeti0MX3UAR/DhQZRITAV8U6M4O22J+xRr0T7ONnKpxFgVjeKsQWgWI8ls0+Ffj19/4fWOpESy2sMT4pzpMJ+USeFhaEAikS3PzUklRmCpxES8CNmDMHkoc0PDfCJZjCQzafidWYwBkqnD9sOzwz8KrtJuziYO8w62jro3L7ly90O9RHSaiEp8q0e5Zs6VGIGjEhPW3MSktgib+LkhQTZNWYwJmTffb/dTlSinXTglVLt5xjhSmnK+FfEkOiZzZ1Ra/1kJKcNYFYriTKc5JVL5yBlkMVosrt+zfSxbpcsXdZAjlPp1pGXsI+rhq9NnXpuSWRhL46pBJO2yGC26Zrx8kUchPr9RIS85QvPNU8pOH5CV2xdTlFbeVAdjRRCVPTLVTzFaEEUyKe2x7Eb781QzyUHvMp5fOI8k9VUZfp1HG4f50O9fNDrMETvxUaZiRLxJmmCFrU4RSUMmk8eIh4ZW7MlxFmvME50rWFhA1Idz0dbUudMFXC3PNI5jlRiVTLA/xLzGDxNtrqWUjDlhqG0034jgCz19z+lqqWaMY9UYlUxGbWWHPYnD0ZuX0AyRHnzC1zV9IrsZadUYEzJ9fJjAuuohYIME8UDoKJ4TZNbBF5fqGvPx5vvYg/4n+qr7lR76a0kRxh2uFRfCiGBLMSZkQkH/64jb8ePhgGHqTqLt1uHzC3xAHvAfERUhzL8LHvyP9kDM3ujbzQ/2wva9lsXPt+uFPjDD/crShNB5MKKDKEZOX/g3VsB4h0wi4M34Aw2GfIJ8A+IpuKMW5sFdY0YgT/flzG8ZOYcNVwDtnW07pA1+vOHn23DdOx6EUT/NixF3mIrRQqE0ccLG8sAXZ/bjpziEYpYkLhno/FRJ7A34pKgDtV8jLRvjTwAAAP//arcuKAAAAAZJREFUAwBX5lXIH6QT9AAAAABJRU5ErkJggg=="
                 style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 0 50%;"></div>
           </button>
-          <button class="c-arrow" onclick="cMove('c-anim',1)">
+          <button class="c-arrow" onclick="cMove('c-trad',1)">
             <div
               style="width:26px; height:26px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
               <img
@@ -2431,7 +2432,7 @@
                 style="height:26px; width: 83px; max-width: none; object-fit: none; object-position: 100% 50%;"></div>
           </button>
         </div>
-        <div class="carousel-track" id="c-anim-t">
+        <div class="carousel-track" id="c-trad-t">
           <div class="carousel-slide"><svg width="80" height="80">
               <use href="#ph" />
             </svg></div>
@@ -2442,10 +2443,10 @@
               <use href="#ph" />
             </svg></div>
         </div>
-        <div class="c-dots" id="c-anim-d">
-          <div class="c-dot act" onclick="cGo('c-anim',0)"></div>
-          <div class="c-dot" onclick="cGo('c-anim',1)"></div>
-          <div class="c-dot" onclick="cGo('c-anim',2)"></div>
+        <div class="c-dots" id="c-trad-d">
+          <div class="c-dot act" onclick="cGo('c-trad',0)"></div>
+          <div class="c-dot" onclick="cGo('c-trad',1)"></div>
+          <div class="c-dot" onclick="cGo('c-trad',2)"></div>
         </div>
       </div>
     </div>
@@ -2496,12 +2497,12 @@
     </div>
   </div>
 
-  <!-- ============ TRADITIONAL WORK ============ -->
-  <div id="page-traditional" class="page">
+  <!-- ============ FEATURED WORK ============ -->
+  <div id="page-featured" class="page">
     <div class="wp-header rev-up">
-      <div class="wp-title"><span class="l1">Traditional</span><span class="l2">Work</span></div>
+      <div class="wp-title"><span class="l1">Featured</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
-        <button class="wp-arr" onclick="goPage('animation')" aria-label="Previous work category">
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
         <button class="wp-arr" onclick="goPage('digital')" aria-label="Next work category">
@@ -2509,10 +2510,9 @@
         </button>
       </div>
     </div>
-    <p class="wp-desc rev-up">I have been drawing since childhood and my love for art has only grown with time.
-      Traditional work has always been my foundation. My work includes detailed fantasy inking, playful doodles, oil
-      paintings, tattoo designs and character drawings. For me, traditional art is more than just a skill — it is a
-      lifelong journey.</p>
+    <p class="wp-desc rev-up">A curated selection of my strongest work across mediums. Featured Work brings together highlights from
+      traditional illustration, digital art, and animation — pieces that best represent my style, range, and
+      craft.</p>
     <div class="gal-wrap">
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -2569,10 +2569,10 @@
     <div class="wp-header rev-up">
       <div class="wp-title"><span class="l1">Digital</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
-        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Previous work category">
+        <button class="wp-arr" onclick="goPage('featured')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('animation')" aria-label="Next work category">
+        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Next work category">
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
@@ -2631,22 +2631,23 @@
     </div>
   </div>
 
-  <!-- ============ ANIMATION WORK ============ -->
-  <div id="page-animation" class="page">
+  <!-- ============ TRADITIONAL WORK ============ -->
+  <div id="page-traditional" class="page">
     <div class="wp-header rev-up">
-      <div class="wp-title"><span class="l1">Animation</span><span class="l2">Work</span></div>
+      <div class="wp-title"><span class="l1">Traditional</span><span class="l2">Work</span></div>
       <div class="wp-nav" aria-label="Work category navigation">
         <button class="wp-arr" onclick="goPage('digital')" aria-label="Previous work category">
           <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
         </button>
-        <button class="wp-arr" onclick="goPage('traditional')" aria-label="Next work category">
+        <button class="wp-arr" onclick="goPage('featured')" aria-label="Next work category">
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
     </div>
-    <p class="wp-desc rev-up">Animation breathes life into characters and stories. From 2D character animation to full
-      sequences, I work across diverse styles and techniques. Every frame is crafted with attention to movement,
-      expression, and timing.</p>
+    <p class="wp-desc rev-up">I have been drawing since childhood and my love for art has only grown with time.
+      Traditional work has always been my foundation. My work includes detailed fantasy inking, playful doodles, oil
+      paintings, tattoo designs and character drawings. For me, traditional art is more than just a skill — it is a
+      lifelong journey.</p>
     <div class="gal-wrap">
       <div class="gal-3">
         <div class="gal-item rev-up"><svg width="80" height="80">
@@ -3290,7 +3291,7 @@
 
     /* ===== AUTO CAROUSELS ===== */
     function startAuto() {
-      ['c-trad', 'c-dig', 'c-anim'].forEach((id, offset) => {
+      ['c-feat', 'c-dig', 'c-trad'].forEach((id, offset) => {
         setInterval(() => {
           if (document.getElementById('page-home').classList.contains('active')) cMove(id, 1);
         }, 3400 + offset * 300);
@@ -3305,7 +3306,7 @@
       if (!page) return;
       let pageKey = 'traditional';
       if (page.id === 'page-digital') pageKey = 'digital';
-      else if (page.id === 'page-animation') pageKey = 'animation';
+      else if (page.id === 'page-featured') pageKey = 'featured';
       page.querySelectorAll('.gal-item').forEach((el, i) => {
         el.onclick = () => openLightbox(pageKey, i);
       });
@@ -3332,14 +3333,14 @@
         { tag: 'Digital • Fan Art', title: 'Fan Illustration', desc: 'Personal fan art project — a creative exercise in style exploration and colour theory.' },
         { tag: 'Digital • Studies', title: 'Digital Studies', desc: 'A collection of digital studies from reference — training the eye and hand simultaneously.' },
       ],
-      animation: [
-        { tag: 'Animation • 2D', title: 'Character Walk Cycle', desc: 'Classic 2D walk cycle animation demonstrating weight, personality, and timing principles.' },
-        { tag: 'Animation • Short', title: 'Animated Short Clip', desc: 'Sequence from an original animated short — rough animation stage with inbetweens.' },
-        { tag: 'Animation • Loop', title: 'Seamless Loop', desc: 'Atmospheric looping animation designed for motion graphics and social media content.' },
-        { tag: 'Animation • Lip Sync', title: 'Lip Sync Study', desc: 'Dialogue animation study focusing on mouth shapes, timing, and secondary motion.' },
-        { tag: 'Animation • Expression', title: 'Emotion Sequence', desc: 'Animation exploring a full emotional arc — joy, surprise, sadness — in a single continuous scene.' },
-        { tag: 'Animation • Action', title: 'Action Sequence', desc: 'Dynamic action animation with squash & stretch, anticipation, and follow-through principles.' },
-        { tag: 'Animation • Experimental', title: 'Experimental Piece', desc: 'Abstract motion experiment blending traditional frame-by-frame technique with digital compositing.' },
+      featured: [
+        { tag: 'Featured • Illustration', title: 'Signature Fantasy Ink', desc: 'A standout fantasy inking piece — one of the strongest examples of detailed pen work from the traditional portfolio.' },
+        { tag: 'Featured • Digital', title: 'Hero Character Art', desc: 'A fully rendered digital character illustration selected as a highlight from the digital portfolio.' },
+        { tag: 'Featured • Concept', title: 'Cinematic Environment', desc: 'Environment concept art with rich atmosphere and colour — a favourite from recent digital work.' },
+        { tag: 'Featured • Portrait', title: 'Expressive Portrait', desc: 'Stylised portrait combining traditional draftsmanship with bold digital colour.' },
+        { tag: 'Featured • Painting', title: 'Oil Study Highlight', desc: 'A featured oil painting exploring dramatic lighting — a standout from the traditional body of work.' },
+        { tag: 'Featured • Design', title: 'Poster Highlight', desc: 'Poster design merging illustration and typography — one of the strongest graphic pieces to date.' },
+        { tag: 'Featured • Character', title: 'Signature Character', desc: 'A defining character design combining costume, expression, and personality across mediums.' },
       ]
     };
 
