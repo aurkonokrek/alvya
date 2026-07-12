@@ -2513,35 +2513,68 @@
     <p class="wp-desc rev-up">A curated selection of my strongest work across mediums. Featured Work brings together highlights from
       traditional illustration, digital art, and animation — pieces that best represent my style, range, and
       craft.</p>
-    <div class="gal-wrap">
-      <div class="gal-3">
-        <div class="gal-item rev-up"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-        <div class="gal-item rev-up" style="transition-delay:.1s"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-        <div class="gal-item rev-up" style="transition-delay:.2s"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-      </div>
-      <div class="gal-1">
-        <div class="gal-item rev-up"><svg width="120" height="80">
-            <use href="#ph" />
-          </svg></div>
-      </div>
-      <div class="gal-3">
-        <div class="gal-item rev-up"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-        <div class="gal-item rev-up" style="transition-delay:.1s"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-        <div class="gal-item rev-up" style="transition-delay:.2s"><svg width="80" height="80">
-            <use href="#ph" />
-          </svg></div>
-      </div>
+    <div class="fw-list">
+      <!-- Featured item 1: StarSheer -->
+      <article class="fw-item rev-up">
+        <div class="fw-media">
+          <video src="/__l5e/assets-v1/efe2d065-5330-4be8-b3a4-78fec3d040d1/starsheer-trailer.mp4"
+                 controls preload="metadata" playsinline
+                 poster=""></video>
+        </div>
+        <div class="fw-details">
+          <h3 class="fw-title">StarSheer – Official Trailer</h3>
+          <p class="fw-desc">Created 2D animation and character turnaround sheets for the official trailer of StarSheer, an upcoming animated series by U.S.-based writer Joshua Done.</p>
+          <div class="fw-resp-label">Responsibilities</div>
+          <ul class="fw-resp-list">
+            <li>2D animation</li>
+            <li>Character turnaround sheets</li>
+            <li>Visual development support for the trailer</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Placeholder items 2-5 (swap media/text as new features are added) -->
+      <article class="fw-item rev-up">
+        <div class="fw-media"><span class="fw-placeholder">Media placeholder</span></div>
+        <div class="fw-details">
+          <h3 class="fw-title">Featured Project Title</h3>
+          <p class="fw-desc">Short description of this featured piece — replace with real project copy when the media is ready.</p>
+          <div class="fw-resp-label">Responsibilities</div>
+          <ul class="fw-resp-list">
+            <li>Role or contribution one</li>
+            <li>Role or contribution two</li>
+            <li>Role or contribution three</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="fw-item rev-up">
+        <div class="fw-media"><span class="fw-placeholder">Media placeholder</span></div>
+        <div class="fw-details">
+          <h3 class="fw-title">Featured Project Title</h3>
+          <p class="fw-desc">Short description of this featured piece — replace with real project copy when the media is ready.</p>
+          <div class="fw-resp-label">Responsibilities</div>
+          <ul class="fw-resp-list">
+            <li>Role or contribution one</li>
+            <li>Role or contribution two</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="fw-item rev-up">
+        <div class="fw-media"><span class="fw-placeholder">Media placeholder</span></div>
+        <div class="fw-details">
+          <h3 class="fw-title">Featured Project Title</h3>
+          <p class="fw-desc">Short description of this featured piece — replace with real project copy when the media is ready.</p>
+          <div class="fw-resp-label">Responsibilities</div>
+          <ul class="fw-resp-list">
+            <li>Role or contribution one</li>
+            <li>Role or contribution two</li>
+          </ul>
+        </div>
+      </article>
     </div>
+
         <div class="more-about rev-up">
       <div class="more-about-bg"></div>
       <div class="more-about-inner">
@@ -3088,7 +3121,50 @@
         .ach-row-body { padding: 0 4px 14px; font-size: 13.5px; }
         .ach-toggle { padding: 12px 22px; font-size: 11px; }
       }
+
+      /* ===== Featured Work rich items ===== */
+      .fw-list { max-width: 1100px; margin: 40px auto 60px; padding: 0 20px; display: flex; flex-direction: column; gap: 90px; }
+      .fw-item { display: flex; flex-direction: column; gap: 26px; }
+      .fw-media {
+        width: 100%; aspect-ratio: 16 / 9; background: #0a0a0a;
+        border: 1px solid rgba(191,144,73,0.18); overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .fw-media img, .fw-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .fw-media .fw-placeholder { color: #555; font-family: 'Nunito Sans', sans-serif; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
+      .fw-details { max-width: 820px; }
+      .fw-title {
+        font-family: 'DM Serif Display', serif; font-weight: 400;
+        font-size: clamp(24px, 2.6vw, 34px); color: #f2f2f2;
+        margin: 0 0 14px; line-height: 1.2;
+      }
+      .fw-desc {
+        font-family: 'Nunito Sans', sans-serif; font-weight: 300;
+        font-size: 15.5px; line-height: 1.75; color: #cfcfcf;
+        margin: 0 0 28px;
+      }
+      .fw-resp-label {
+        font-family: 'Nunito Sans', sans-serif; font-weight: 600;
+        font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+        color: #BF9049; margin: 0 0 12px;
+      }
+      .fw-resp-list {
+        list-style: none; padding: 0; margin: 0;
+        font-family: 'Nunito Sans', sans-serif; font-weight: 300;
+        font-size: 14.5px; line-height: 1.9; color: #cfcfcf;
+      }
+      .fw-resp-list li { position: relative; padding-left: 18px; }
+      .fw-resp-list li::before {
+        content: ""; position: absolute; left: 0; top: 0.85em;
+        width: 6px; height: 1px; background: #BF9049;
+      }
+      @media (max-width: 640px) {
+        .fw-list { gap: 60px; margin: 30px auto 40px; }
+        .fw-title { margin-bottom: 10px; }
+        .fw-desc { font-size: 14.5px; margin-bottom: 22px; }
+      }
     </style>
+
 
     <script>
       (function(){
