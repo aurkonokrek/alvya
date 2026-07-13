@@ -3723,6 +3723,25 @@
       obs.observe(bar);
     }
 
+    /* ===== HEADING SCROLL-LINKED REVEAL ===== */
+    function updateHeadingReveal() {
+      const vh = window.innerHeight;
+      document.querySelectorAll('.hd-reveal').forEach(el => {
+        const r = el.getBoundingClientRect();
+        // fully hidden below viewport; fully in when top rises to 75% of viewport;
+        // fades back out symmetrically as it scrolls above the top edge.
+        const start = vh;
+        const end = vh * 0.75;
+        let p = (start - r.top) / (start - end);
+        // fade back out once heading scrolls above viewport
+        if (r.bottom < 0) p = 0;
+        p = Math.max(0, Math.min(1, p));
+        if (p > 0.92) p = 1;
+        el.style.opacity = p === 1 ? '1' : p.toFixed(3);
+        el.style.transform = p === 1 ? 'none' : `translateY(${((1 - p) * 60).toFixed(1)}px) scale(${(0.96 + p * 0.04).toFixed(3)})`;
+      });
+    }
+
     /* ===== FOOTER WORDMARK SCROLL-LINKED REVEAL ===== */
     function updateFooterWordmark() {
       const vh = window.innerHeight;
