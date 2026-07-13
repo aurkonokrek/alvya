@@ -3742,6 +3742,23 @@
       obs.observe(bar);
     }
 
+    /* ===== BODY-TEXT SCROLL-LINKED REVEAL (staggered ~120ms after heading) ===== */
+    function updateBodyReveal() {
+      const vh = window.innerHeight;
+      // Shifted offsets vs. .hd-reveal so body text visually lags the heading.
+      const start = vh * 0.95;
+      const end = vh * 0.60;
+      document.querySelectorAll('.bd-reveal').forEach(el => {
+        const r = el.getBoundingClientRect();
+        let p = (start - r.top) / (start - end);
+        if (r.bottom < 0) p = 0;
+        p = Math.max(0, Math.min(1, p));
+        if (p > 0.92) p = 1;
+        el.style.opacity = p === 1 ? '1' : p.toFixed(3);
+        el.style.transform = p === 1 ? 'none' : `translateY(${((1 - p) * 28).toFixed(1)}px)`;
+      });
+    }
+
     /* ===== HEADING SCROLL-LINKED REVEAL ===== */
     function updateHeadingReveal() {
       const vh = window.innerHeight;
