@@ -3673,19 +3673,15 @@
         _splitToWords(el, true);
         requestAnimationFrame(() => el.classList.add('hs-in'));
       });
-      // Scroll-triggered headlines
-      const sels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label'];
-      sels.forEach(sel => {
+      // Scroll-linked reveal on major section headings (replaces split-text on these).
+      // Kept as a single class `.hd-reveal` so this can be rolled back cleanly.
+      const revealSels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label', '.hw-title', '.wp-title'];
+      revealSels.forEach(sel => {
         scope.querySelectorAll(sel).forEach(el => {
-          _splitToWords(el, false);
-          const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-              if (e.isIntersecting) { el.classList.add('hs-in'); io.unobserve(el); }
-            });
-          }, { threshold: 0.35 });
-          io.observe(el);
+          el.classList.add('hd-reveal');
         });
       });
+      updateHeadingReveal();
     }
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
