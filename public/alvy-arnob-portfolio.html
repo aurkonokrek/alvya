@@ -1794,6 +1794,14 @@
       animation: shimmer 4s linear infinite;
     }
 
+    /* ===== HEADING SCROLL-LINKED REVEAL (site-wide) ===== */
+    .hd-reveal {
+      opacity: 0;
+      transform: translateY(60px) scale(.96);
+      transition: opacity .3s ease, transform .3s ease;
+      will-change: opacity, transform;
+    }
+
 
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW FRAME ===== */
@@ -3665,19 +3673,18 @@
         _splitToWords(el, true);
         requestAnimationFrame(() => el.classList.add('hs-in'));
       });
-      // Scroll-triggered headlines
-      const sels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label'];
-      sels.forEach(sel => {
+      // Scroll-linked reveal on major section headings (replaces split-text on these).
+      // Kept as a single class `.hd-reveal` so this can be rolled back cleanly.
+      const revealSels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label', '.hw-title', '.wp-title'];
+      revealSels.forEach(sel => {
         scope.querySelectorAll(sel).forEach(el => {
-          _splitToWords(el, false);
-          const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-              if (e.isIntersecting) { el.classList.add('hs-in'); io.unobserve(el); }
-            });
-          }, { threshold: 0.35 });
-          io.observe(el);
+          el.classList.add('hd-reveal');
+          // Neutralize any prior split-text/letter-stagger reveal on these headings
+          // by force-revealing their inner spans; the outer .hd-reveal controls opacity.
+          el.classList.add('vis', 'hs-in');
         });
       });
+      updateHeadingReveal();
     }
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
@@ -3719,6 +3726,25 @@
       obs.observe(bar);
     }
 
+    /* ===== HEADING SCROLL-LINKED REVEAL ===== */
+    function updateHeadingReveal() {
+      const vh = window.innerHeight;
+      document.querySelectorAll('.hd-reveal').forEach(el => {
+        const r = el.getBoundingClientRect();
+        // fully hidden below viewport; fully in when top rises to 75% of viewport;
+        // fades back out symmetrically as it scrolls above the top edge.
+        const start = vh;
+        const end = vh * 0.75;
+        let p = (start - r.top) / (start - end);
+        // fade back out once heading scrolls above viewport
+        if (r.bottom < 0) p = 0;
+        p = Math.max(0, Math.min(1, p));
+        if (p > 0.92) p = 1;
+        el.style.opacity = p === 1 ? '1' : p.toFixed(3);
+        el.style.transform = p === 1 ? 'none' : `translateY(${((1 - p) * 60).toFixed(1)}px) scale(${(0.96 + p * 0.04).toFixed(3)})`;
+      });
+    }
+
     /* ===== FOOTER WORDMARK SCROLL-LINKED REVEAL ===== */
     function updateFooterWordmark() {
       const vh = window.innerHeight;
@@ -3744,13 +3770,14 @@
           const bg = document.getElementById('parallaxBg');
           if (bg) bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.07)`;
           updateFooterWordmark();
+          updateHeadingReveal();
           ptick = false;
         });
         ptick = true;
       }
     }, { passive: true });
-    window.addEventListener('resize', updateFooterWordmark, { passive: true });
-    window.addEventListener('load', updateFooterWordmark);
+    window.addEventListener('resize', () => { updateFooterWordmark(); updateHeadingReveal(); }, { passive: true });
+    window.addEventListener('load', () => { updateFooterWordmark(); updateHeadingReveal(); });
 
     /* ===== GENERIC CAROUSEL ===== */
     const CS = {};
