@@ -3691,7 +3691,16 @@
           el.classList.add('vis', 'hs-in');
         });
       });
+      // Body-text scroll-linked reveal (staggered slightly after headings).
+      const bodySels = ['.cta-sub', '.bio-body', '.ach-lede', '.wp-desc', '.fw-desc', '.tl-content', '.more-about-body'];
+      bodySels.forEach(sel => {
+        scope.querySelectorAll(sel).forEach(el => {
+          el.classList.add('bd-reveal');
+          el.classList.add('vis', 'hs-in');
+        });
+      });
       updateHeadingReveal();
+      updateBodyReveal();
     }
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
