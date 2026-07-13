@@ -451,11 +451,16 @@
 
     .footer-name {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: .05em;
+      font-size: clamp(64px, 14vw, 220px);
+      line-height: 1;
+      letter-spacing: .04em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 40px;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(60px) scale(.96);
+      transition: opacity .3s ease, transform .3s ease;
+      will-change: opacity, transform;
     }
 
     .footer-name span {
@@ -464,37 +469,45 @@
 
     .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      gap: 0;
     }
 
     .footer-link {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: 'Roboto', sans-serif;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 4px;
+      font-family: 'Nunito Sans', 'Roboto', sans-serif;
       font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
       cursor: pointer;
-      transition: color .2s;
+      border-bottom: 1px solid rgba(191,144,73,0.25);
+      transition: color .3s ease;
     }
+    .footer-link:first-child { border-top: 1px solid rgba(191,144,73,0.25); }
 
-    .footer-link:hover {
+    .footer-link .fl-arrow {
+      display: inline-block;
+      transition: transform .3s ease, color .3s ease;
       color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
     }
 
-    .footer-link svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
+    .footer-link:hover { color: var(--gold); }
+    .footer-link:hover .fl-arrow { transform: translateX(8px); }
 
     .footer-divider {
       height: 1px;
-      background: var(--white);
+      background: rgba(191,144,73,0.3);
       margin-top: 8px;
     }
 
@@ -2697,25 +2710,10 @@
     <div class="footer">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
       <div class="footer-links">
-        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-          </svg>Facebook</a>
-        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>Instagram</a>
-        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>LinkedIn</a>
-        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413z" />
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12c0 1.94.52 3.76 1.43 5.33L2 22l4.82-1.41C8.29 21.5 10.09 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-          </svg>WhatsApp</a>
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -2814,8 +2812,11 @@
     </div>
     <div class="footer">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
-      <div class="footer-links"><a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener">Facebook</a><a class="footer-link"
-          href="#">Instagram</a><a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener">LinkedIn</a><a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-links">
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -2874,8 +2875,11 @@
     </div>
     <div class="footer">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
-      <div class="footer-links"><a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener">Facebook</a><a class="footer-link"
-          href="#">Instagram</a><a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener">LinkedIn</a><a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-links">
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -2935,8 +2939,11 @@
     </div>
     <div class="footer">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
-      <div class="footer-links"><a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener">Facebook</a><a class="footer-link"
-          href="#">Instagram</a><a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener">LinkedIn</a><a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-links">
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -3424,25 +3431,10 @@
     <div class="footer">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
       <div class="footer-links">
-        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-          </svg>Facebook</a>
-        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>Instagram</a>
-        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>LinkedIn</a>
-        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413z" />
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12c0 1.94.52 3.76 1.43 5.33L2 22l4.82-1.41C8.29 21.5 10.09 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-          </svg>WhatsApp</a>
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -3468,23 +3460,10 @@
     <div class="footer" style="margin-top:60px;">
       <div class="footer-name">ALVY <span>ARNOB</span></div>
       <div class="footer-links">
-        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-          </svg>Facebook</a>
-        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          </svg>Instagram</a>
-        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>LinkedIn</a>
-        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15z" />
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12c0 1.94.52 3.76 1.43 5.33L2 22l4.82-1.41C8.29 21.5 10.09 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-          </svg>WhatsApp</a>
+        <a class="footer-link" href="https://www.facebook.com/alviekun" target="_blank" rel="noopener"><span class="fl-label">Facebook</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.instagram.com/alvie_kun/" target="_blank" rel="noopener"><span class="fl-label">Instagram</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://www.linkedin.com/in/alvy-arnob-aa80b4331/" target="_blank" rel="noopener"><span class="fl-label">LinkedIn</span><span class="fl-arrow">&rarr;</span></a>
+        <a class="footer-link" href="https://wa.me/8801712967822" target="_blank" rel="noopener"><span class="fl-label">WhatsApp</span><span class="fl-arrow">&rarr;</span></a>
       </div>
       <div class="footer-divider"></div>
     </div>
@@ -3524,7 +3503,7 @@
       if (!t) return;
       t.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
-      setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); initHeadlineSplit(); initAchBannerFrame(); }, 60);
+      setTimeout(() => { initReveal(); initSplitText(); initTimelines(); wireGallery(); initHeadlineSplit(); initAchBannerFrame(); updateFooterWordmark(); }, 60);
     }
     function toggleNav() {
       var nav = document.getElementById('navMob');
@@ -3710,6 +3689,21 @@
       obs.observe(bar);
     }
 
+    /* ===== FOOTER WORDMARK SCROLL-LINKED REVEAL ===== */
+    function updateFooterWordmark() {
+      const vh = window.innerHeight;
+      document.querySelectorAll('.page.active .footer-name').forEach(el => {
+        const r = el.getBoundingClientRect();
+        // progress: 0 when el top is at viewport bottom, 1 when el top is 30% up viewport
+        const start = vh;
+        const end = vh * 0.30;
+        let p = (start - r.top) / (start - end);
+        p = Math.max(0, Math.min(1, p));
+        el.style.opacity = p.toFixed(3);
+        el.style.transform = `translateY(${((1 - p) * 60).toFixed(1)}px) scale(${(0.96 + p * 0.04).toFixed(3)})`;
+      });
+    }
+
     /* ===== PARALLAX ===== */
     let ptick = false;
     window.addEventListener('scroll', () => {
@@ -3717,11 +3711,14 @@
         requestAnimationFrame(() => {
           const bg = document.getElementById('parallaxBg');
           if (bg) bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.07)`;
+          updateFooterWordmark();
           ptick = false;
         });
         ptick = true;
       }
     }, { passive: true });
+    window.addEventListener('resize', updateFooterWordmark, { passive: true });
+    window.addEventListener('load', updateFooterWordmark);
 
     /* ===== GENERIC CAROUSEL ===== */
     const CS = {};
@@ -3918,7 +3915,7 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-      initReveal(); initSplitText(); initStats(); initTimelines(); startAuto(); wireGallery(); initHeadlineSplit(); initAchBannerFrame();
+      initReveal(); initSplitText(); initStats(); initTimelines(); startAuto(); wireGallery(); initHeadlineSplit(); initAchBannerFrame(); updateFooterWordmark();
     });
   </script>
 
