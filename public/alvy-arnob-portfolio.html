@@ -3679,6 +3679,9 @@
       revealSels.forEach(sel => {
         scope.querySelectorAll(sel).forEach(el => {
           el.classList.add('hd-reveal');
+          // Neutralize any prior split-text/letter-stagger reveal on these headings
+          // by force-revealing their inner spans; the outer .hd-reveal controls opacity.
+          el.classList.add('vis', 'hs-in');
         });
       });
       updateHeadingReveal();
