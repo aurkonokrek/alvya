@@ -422,7 +422,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: shimmer 4s linear infinite !important;
+      animation: shimmer 4s linear infinite;
     }
 
     @keyframes shimmer {
@@ -1791,7 +1791,7 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
-      animation: shimmer 4s linear infinite !important;
+      animation: shimmer 4s linear infinite;
     }
 
 
@@ -3991,41 +3991,7 @@
     .aspect-video, [class*="bg-gradient-to"] { transition: transform 400ms ease, box-shadow 400ms ease, border-color 400ms ease; }
     .aspect-video:hover, [class*="bg-gradient-to"]:hover { box-shadow: 0 12px 32px rgba(191,144,73,0.08); }
     h1, h2, h3, .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
-    /* Global gold text shimmer (matches CTA heading animation) */
-    .gold-shimmer {
-      background: linear-gradient(90deg, #BF9049 30%, #f0c97a 50%, #BF9049 70%) !important;
-      background-size: 400px 100% !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      background-clip: text !important;
-      animation: shimmer 4s linear infinite !important;
-    }
   </style>
-  <script>
-    (function () {
-      var GOLD = 'rgb(191, 144, 73)';
-      function applyGoldShimmer(root) {
-        (root || document).querySelectorAll('body *').forEach(function (el) {
-          if (el.closest('script,style,noscript,svg')) return;
-          if (el.classList.contains('gold-shimmer')) return;
-          // Only text-bearing leaves (has direct non-empty text node)
-          var hasText = false;
-          for (var i = 0; i < el.childNodes.length; i++) {
-            var n = el.childNodes[i];
-            if (n.nodeType === 3 && n.textContent.trim()) { hasText = true; break; }
-          }
-          if (!hasText) return;
-          var c = getComputedStyle(el).color;
-          if (c === GOLD) el.classList.add('gold-shimmer');
-        });
-      }
-      function run() { applyGoldShimmer(); }
-      document.addEventListener('DOMContentLoaded', run);
-      window.addEventListener('load', run);
-      // Re-run once after other init settles
-      setTimeout(run, 300);
-    })();
-  </script>
 </body>
 
 </html>
