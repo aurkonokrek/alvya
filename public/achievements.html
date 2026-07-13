@@ -167,6 +167,20 @@
     .footer-bottom a:hover { color: #bf9049; }
     .footer-divider { display: none; }
 
+    /* Global gold text shimmer (matches CTA heading animation) */
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position:  400px 0; }
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #BF9049 30%, #f0c97a 50%, #BF9049 70%) !important;
+      background-size: 400px 100% !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      animation: shimmer 4s linear infinite;
+    }
+
     @media (max-width: 720px) {
       .navbar { padding: 20px 24px; }
       .nav-links { gap: 20px; }
@@ -225,6 +239,27 @@
       window.addEventListener('resize', updateFooterWordmark, { passive: true });
       window.addEventListener('load', updateFooterWordmark);
       document.addEventListener('DOMContentLoaded', updateFooterWordmark);
+    })();
+  </script>
+  <script>
+    (function () {
+      var GOLD = 'rgb(191, 144, 73)';
+      function applyGoldShimmer() {
+        document.querySelectorAll('body *').forEach(function (el) {
+          if (el.closest('script,style,noscript,svg')) return;
+          if (el.classList.contains('gold-shimmer')) return;
+          var hasText = false;
+          for (var i = 0; i < el.childNodes.length; i++) {
+            var n = el.childNodes[i];
+            if (n.nodeType === 3 && n.textContent.trim()) { hasText = true; break; }
+          }
+          if (!hasText) return;
+          if (getComputedStyle(el).color === GOLD) el.classList.add('gold-shimmer');
+        });
+      }
+      document.addEventListener('DOMContentLoaded', applyGoldShimmer);
+      window.addEventListener('load', applyGoldShimmer);
+      setTimeout(applyGoldShimmer, 300);
     })();
   </script>
 </body>
