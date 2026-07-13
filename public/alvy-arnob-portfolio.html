@@ -872,6 +872,17 @@
       white-space: nowrap;
     }
 
+    .hw-kicker {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #BF9049;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
     .hw-body {
       font-family: 'Nunito Sans', sans-serif;
       font-size: clamp(13px, 1.5vw, 18px);
@@ -2699,6 +2710,7 @@
     <!-- FEATURED WORK -->
     <section class="feat-banner-section">
       <div class="feat-banner-text rev-l">
+        <div class="hw-kicker">Featured Work</div>
         <div class="hw-title spt">Animation Work</div>
         <div class="hw-body">A curated selection of my strongest work across mediums — highlights spanning traditional illustration,
           digital art, and animation, gathered in one place.
@@ -2733,6 +2745,7 @@
     <!-- DIGITAL WORK -->
     <div class="hw-section rev">
       <div class="hw-text rev-r" style="text-align:right;">
+        <div class="hw-kicker" style="text-align:right;">Featured Work</div>
         <div class="hw-title spt">Digital Illustration</div>
         <div class="hw-body" style="text-align:right;">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
           faucibus ex sapien vitae pellentesque sem placerat.</div>
@@ -2777,6 +2790,7 @@
     <!-- TRADITIONAL WORK -->
     <div class="hw-section">
       <div class="hw-text rev-l">
+        <div class="hw-kicker">Featured Work</div>
         <div class="hw-title spt">Traditional Work</div>
         <div class="hw-body">I have been drawing since childhood and my love for art has only grown with time.
           Traditional work has always been my foundation, giving me the freedom to explore creativity in many ways.
@@ -3770,7 +3784,7 @@
       // Kept as a single class `.hd-reveal` so this can be rolled back cleanly.
       const revealSels = [
         '.cta-heading', '.exp-head', '.ach-head', '.bio-label', '.hw-title', '.wp-title',
-        '.ct-h1', '.ct-h2', '.fw-title', '.more-about-label', '.ach-kicker',
+        '.ct-h1', '.ct-h2', '.fw-title', '.more-about-label', '.ach-kicker', '.hw-kicker',
         '.ach-row-title', '.tl-title', '.stat-num', '.hero-sub', '.studio-alyx-label',
         '.feat-banner-text', '.lb-details-title'
       ];
