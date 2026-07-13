@@ -167,6 +167,20 @@
     .footer-bottom a:hover { color: #bf9049; }
     .footer-divider { display: none; }
 
+    /* Global gold text shimmer (matches CTA heading animation) */
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position:  400px 0; }
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #BF9049 30%, #f0c97a 50%, #BF9049 70%) !important;
+      background-size: 400px 100% !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      animation: shimmer 4s linear infinite;
+    }
+
     @media (max-width: 720px) {
       .navbar { padding: 20px 24px; }
       .nav-links { gap: 20px; }
