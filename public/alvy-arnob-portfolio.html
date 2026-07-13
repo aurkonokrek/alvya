@@ -1801,6 +1801,13 @@
       transition: opacity .3s ease, transform .3s ease;
       will-change: opacity, transform;
     }
+    /* ===== BODY-TEXT SCROLL-LINKED REVEAL (site-wide, slight stagger after heading) ===== */
+    .bd-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .35s ease, transform .35s ease;
+      will-change: opacity, transform;
+    }
 
 
 
@@ -3684,7 +3691,15 @@
           el.classList.add('vis', 'hs-in');
         });
       });
-      updateHeadingReveal();
+      // Body-text scroll-linked reveal (staggered slightly after headings).
+      const bodySels = ['.cta-sub', '.bio-body', '.ach-lede', '.wp-desc', '.fw-desc', '.tl-content', '.more-about-body'];
+      bodySels.forEach(sel => {
+        scope.querySelectorAll(sel).forEach(el => {
+          el.classList.add('bd-reveal');
+          el.classList.add('vis', 'hs-in');
+        });
+      });
+      updateHeadingReveal(); updateBodyReveal();
     }
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
@@ -3724,6 +3739,23 @@
         entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.stat-num[data-target]').forEach(animCount); obs.unobserve(e.target); } });
       }, { threshold: 0.5 });
       obs.observe(bar);
+    }
+
+    /* ===== BODY-TEXT SCROLL-LINKED REVEAL (staggered ~120ms after heading) ===== */
+    function updateBodyReveal() {
+      const vh = window.innerHeight;
+      // Shifted offsets vs. .hd-reveal so body text visually lags the heading.
+      const start = vh * 0.95;
+      const end = vh * 0.60;
+      document.querySelectorAll('.bd-reveal').forEach(el => {
+        const r = el.getBoundingClientRect();
+        let p = (start - r.top) / (start - end);
+        if (r.bottom < 0) p = 0;
+        p = Math.max(0, Math.min(1, p));
+        if (p > 0.92) p = 1;
+        el.style.opacity = p === 1 ? '1' : p.toFixed(3);
+        el.style.transform = p === 1 ? 'none' : `translateY(${((1 - p) * 28).toFixed(1)}px)`;
+      });
     }
 
     /* ===== HEADING SCROLL-LINKED REVEAL ===== */
@@ -3770,14 +3802,14 @@
           const bg = document.getElementById('parallaxBg');
           if (bg) bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.07)`;
           updateFooterWordmark();
-          updateHeadingReveal();
+          updateHeadingReveal(); updateBodyReveal();
           ptick = false;
         });
         ptick = true;
       }
     }, { passive: true });
-    window.addEventListener('resize', () => { updateFooterWordmark(); updateHeadingReveal(); }, { passive: true });
-    window.addEventListener('load', () => { updateFooterWordmark(); updateHeadingReveal(); });
+    window.addEventListener('resize', () => { updateFooterWordmark(); updateHeadingReveal(); updateBodyReveal(); }, { passive: true });
+    window.addEventListener('load', () => { updateFooterWordmark(); updateHeadingReveal(); updateBodyReveal(); });
 
     /* ===== GENERIC CAROUSEL ===== */
     const CS = {};
