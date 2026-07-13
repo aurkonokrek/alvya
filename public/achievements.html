@@ -241,5 +241,26 @@
       document.addEventListener('DOMContentLoaded', updateFooterWordmark);
     })();
   </script>
+  <script>
+    (function () {
+      var GOLD = 'rgb(191, 144, 73)';
+      function applyGoldShimmer() {
+        document.querySelectorAll('body *').forEach(function (el) {
+          if (el.closest('script,style,noscript,svg')) return;
+          if (el.classList.contains('gold-shimmer')) return;
+          var hasText = false;
+          for (var i = 0; i < el.childNodes.length; i++) {
+            var n = el.childNodes[i];
+            if (n.nodeType === 3 && n.textContent.trim()) { hasText = true; break; }
+          }
+          if (!hasText) return;
+          if (getComputedStyle(el).color === GOLD) el.classList.add('gold-shimmer');
+        });
+      }
+      document.addEventListener('DOMContentLoaded', applyGoldShimmer);
+      window.addEventListener('load', applyGoldShimmer);
+      setTimeout(applyGoldShimmer, 300);
+    })();
+  </script>
 </body>
 </html>
