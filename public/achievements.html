@@ -210,11 +210,12 @@
         const vh = window.innerHeight;
         document.querySelectorAll('.footer-name').forEach(el => {
           const r = el.getBoundingClientRect();
-          const start = vh, end = vh * 0.30;
+          const start = vh, end = vh * 0.75;
           let p = (start - r.top) / (start - end);
           p = Math.max(0, Math.min(1, p));
-          el.style.opacity = p.toFixed(3);
-          el.style.transform = `translateY(${((1 - p) * 60).toFixed(1)}px) scale(${(0.96 + p * 0.04).toFixed(3)})`;
+          if (p > 0.92) p = 1;
+          el.style.opacity = p === 1 ? '1' : p.toFixed(3);
+          el.style.transform = p === 1 ? 'none' : `translateY(${((1 - p) * 60).toFixed(1)}px) scale(${(0.96 + p * 0.04).toFixed(3)})`;
         });
       }
       let tick = false;
