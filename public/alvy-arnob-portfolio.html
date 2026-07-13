@@ -1794,6 +1794,14 @@
       animation: shimmer 4s linear infinite;
     }
 
+    /* ===== HEADING SCROLL-LINKED REVEAL (site-wide) ===== */
+    .hd-reveal {
+      opacity: 0;
+      transform: translateY(60px) scale(.96);
+      transition: opacity .3s ease, transform .3s ease;
+      will-change: opacity, transform;
+    }
+
 
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW FRAME ===== */
