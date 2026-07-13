@@ -3699,7 +3699,7 @@
           el.classList.add('vis', 'hs-in');
         });
       });
-      updateHeadingReveal();
+      updateHeadingReveal(); updateBodyReveal();
       updateBodyReveal();
     }
 
@@ -3803,14 +3803,14 @@
           const bg = document.getElementById('parallaxBg');
           if (bg) bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.07)`;
           updateFooterWordmark();
-          updateHeadingReveal();
+          updateHeadingReveal(); updateBodyReveal();
           ptick = false;
         });
         ptick = true;
       }
     }, { passive: true });
-    window.addEventListener('resize', () => { updateFooterWordmark(); updateHeadingReveal(); }, { passive: true });
-    window.addEventListener('load', () => { updateFooterWordmark(); updateHeadingReveal(); });
+    window.addEventListener('resize', () => { updateFooterWordmark(); updateHeadingReveal(); updateBodyReveal(); }, { passive: true });
+    window.addEventListener('load', () => { updateFooterWordmark(); updateHeadingReveal(); updateBodyReveal(); });
 
     /* ===== GENERIC CAROUSEL ===== */
     const CS = {};
