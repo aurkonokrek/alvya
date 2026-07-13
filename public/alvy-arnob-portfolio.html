@@ -3682,25 +3682,44 @@
       });
       // Scroll-linked reveal on major section headings (replaces split-text on these).
       // Kept as a single class `.hd-reveal` so this can be rolled back cleanly.
-      const revealSels = ['.cta-heading', '.exp-head', '.ach-head', '.bio-label', '.hw-title', '.wp-title'];
+      const revealSels = [
+        '.cta-heading', '.exp-head', '.ach-head', '.bio-label', '.hw-title', '.wp-title',
+        '.ct-h1', '.ct-h2', '.fw-title', '.more-about-label', '.ach-kicker',
+        '.ach-row-title', '.tl-title', '.stat-num', '.hero-sub', '.studio-alyx-label',
+        '.feat-banner-text', '.lb-details-title'
+      ];
       revealSels.forEach(sel => {
         scope.querySelectorAll(sel).forEach(el => {
+          if (el.closest('.footer')) return;
           el.classList.add('hd-reveal');
           // Neutralize any prior split-text/letter-stagger reveal on these headings
           // by force-revealing their inner spans; the outer .hd-reveal controls opacity.
           el.classList.add('vis', 'hs-in');
         });
       });
-      // Body-text scroll-linked reveal (staggered slightly after headings).
-      const bodySels = ['.cta-sub', '.bio-body', '.ach-lede', '.wp-desc', '.fw-desc', '.tl-content', '.more-about-body'];
+      // Body-text and content-block scroll-linked reveal (staggered slightly after headings).
+      const bodySels = [
+        '.cta-sub', '.bio-body', '.bio-text', '.ach-lede', '.ach-intro',
+        '.ach-row-body', '.ach-row-year', '.ach-toggle-label',
+        '.wp-desc', '.fw-desc', '.fw-details', '.fw-resp-label', '.fw-resp-list',
+        '.tl-content', '.tl-date', '.tl-role', '.more-about-body',
+        '.stat-label', '.btn-outline', '.btn-white', '.footer-link',
+        '.ct-field', '.ct-msg', '.ct-msg-lbl', '.ct-submit', '.cv-row',
+        '.hw-body', '.hw-text', '.role-w', '.ach-cta-row',
+        '.studio-alyx-cta', '.fw-item', '.gal-item', '.tl-item', '.ach-row',
+        '.stat-item', '.more-about-inner', '.lb-details-desc', '.lb-details-meta'
+      ];
       bodySels.forEach(sel => {
         scope.querySelectorAll(sel).forEach(el => {
+          if (el.classList.contains('hd-reveal')) return;
+          if (el.closest('.footer')) return;
           el.classList.add('bd-reveal');
           el.classList.add('vis', 'hs-in');
         });
       });
       updateHeadingReveal(); updateBodyReveal();
     }
+
 
     /* ===== ACHIEVEMENTS BANNER LINE-DRAW ===== */
     function initAchBannerFrame() {
